@@ -14,7 +14,6 @@ module.exports = async (ctx, next) => {
 
       data.respond(ctx, response, next);
     } else if (method === 'post') {
-      console.log(body);
       const response = await data.post(path, body, headers);
 
       data.respond(ctx, response, next);
