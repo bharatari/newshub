@@ -67,6 +67,7 @@ module.exports = {
     return request.get({
       url: `${service}${path}`,
       headers,
+      gzip: true,
     });
   },
   post(path, body, headers) {
@@ -76,6 +77,8 @@ module.exports = {
       url: `${service}${path}`,
       headers,
       body,
+      json: true,
+      gzip: true,
     });
   },
   put(path, body, headers) {
@@ -86,6 +89,8 @@ module.exports = {
       url: `${service}${path}`,
       headers,
       body,
+      json: true,
+      gzip: true,
     });
   },
   delete(path, headers) {
@@ -95,6 +100,7 @@ module.exports = {
       method: 'DELETE',
       url: `${service}${path}`,
       headers,
+      gzip: true,
     });
   },
   respond(ctx, response, next) {
