@@ -2,7 +2,7 @@ const data = require('../../utils/data');
 const querystring = require('querystring');
 
 module.exports = (router) => {
-  router.post('/api/event', async (ctx, next) => {
+  router.post('/api/log', async (ctx, next) => {
     const body = ctx.request.body;
 
     const barcode = encodeURIComponent(body.barcode);

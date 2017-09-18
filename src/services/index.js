@@ -1,5 +1,5 @@
-const event = require('./event/index');
+const log = require('./log/index');
 
 module.exports = (router) => {
-  event(router);
+  log(router);
 };

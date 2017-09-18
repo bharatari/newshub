@@ -61,25 +61,38 @@ module.exports = {
 
     return url;
   },
-  get(path, headers) {
+  get(path, query, headers) {
     const service = this.findService(path);
 
     return request.get({
-      url: `${service}${path}`,
+      url: `${service}${path}${query}`,
       headers,
       gzip: true,
     });
   },
-  post(path, body, headers) {
+  post(path, ctx, headers) {
     const service = this.findService(path);
+    const body = ctx.request.body;
+    const req = ctx.req;
 
-    return request.post({
-      url: `${service}${path}`,
-      headers,
-      body,
-      json: true,
-      gzip: true,
-    });
+    if (headers['content-type'].includes('multipart/form-data')) {
+      return req.pipe(
+        request.post({
+          url: `${service}${path}`,
+          headers,
+          json: true,
+          gzip: true,
+        })
+      );
+    } else if (headers['content-type'].includes('application/json')) {
+      return request.post({
+        url: `${service}${path}`,
+        headers,
+        body,
+        json: true,
+        gzip: true,
+      });
+    }
   },
   put(path, body, headers) {
     const service = this.findService(path);
@@ -95,7 +108,7 @@ module.exports = {
   },
   delete(path, headers) {
     const service = this.findService(path);
-
+ 
     return request({
       method: 'DELETE',
       url: `${service}${path}`,
