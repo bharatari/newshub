@@ -44,7 +44,7 @@ module.exports = (router) => {
         'newshub-organization-id': headers['newshub-organization-id'],
       });
 
-      log.targetUser = targetUser,
+      log.targetUser = targetUser[0];
 
       data.respond(ctx, log, next);
     } catch (e) {
