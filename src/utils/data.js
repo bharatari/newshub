@@ -70,11 +70,9 @@ module.exports = {
       gzip: true,
     });
   },
-  post(path, ctx, headers) {
+  post(path, body, headers, req) {
     const service = this.findService(path);
-    const body = ctx.request.body;
-    const req = ctx.req;
-
+    
     if (headers['content-type'].includes('multipart/form-data')) {
       return req.pipe(
         request.post({
@@ -129,5 +127,14 @@ module.exports = {
     }
 
     next();
+  },
+  async getOrganizationId(userId, headers) {
+    const user = JSON.parse(await this.get(`/api/user/${userId}`, '', headers));
+
+    if (user.currentOrganization) {
+      return user.currentOrganization.id;
+    } else {
+      return '';
+    }
   }
 };

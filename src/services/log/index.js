@@ -3,31 +3,54 @@ const querystring = require('querystring');
 
 module.exports = (router) => {
   router.post('/api/log', async (ctx, next) => {
+    const path = ctx.request.path;
     const body = ctx.request.body;
+    const headers = ctx.request.headers;
+    const userId = ctx.state.user ? ctx.state.user.id : '';
 
     const barcode = encodeURIComponent(body.barcode);
 
     try {
+      headers['newshub-user-id'] = userId;
+    
+      if (userId) {
+        headers['newshub-organization-id'] = await data.getOrganizationId(userId, {
+          'content-type': 'application/json; charset=utf-8',
+          'authorization': headers['authorization'],
+        });
+      }
+
       const query = {
         barcode,
       };
+
       const qstring = querystring.stringify(query);
 
-      const user = await data.get(`/api/user?${qstring}`);
-      const currentUserId = ctx.state.user.id;
-      const currentUser = await data.get(`/api/user/${currentUserId}`);
-      
+      const targetUser = JSON.parse(await data.get(`/api/user`, `?${qstring}`, {
+        'content-type': 'application/json; charset=utf-8',
+        'authorization': headers['authorization'],
+      }));
+
+      const targetUserId = targetUser[0].id;
+
       const log = await data.post('/api/log', {
-        userId: user.id,
+        userId,
+        targetUserId,
         eventId: body.eventId,
-        organizationId: currentUser.currentOrganizationId,
+      }, {
+        'content-type': 'application/json; charset=utf-8',
+        'authorization': headers['authorization'],
+        'newshub-user-id': headers['newshub-user-id'],
+        'newshub-organization-id': headers['newshub-organization-id'],
       });
 
-      log.user = user;
+      log.targetUser = targetUser,
 
-      ctx.body = log;
+      data.respond(ctx, log, next);
     } catch (e) {
-      ctx.throw(400, e);
+      data.handleError(ctx, e, next);
+
+      next();
     }
   });
 };
