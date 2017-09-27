@@ -1,0 +1,33 @@
+version: '3'
+services:
+  gateway:
+    image: bharatari/newshub_gateway
+    environment:
+    - NODE_ENV=production
+    - PORT=80
+    restart: always
+    env_file: gateway.env
+    ports:
+    - "80:80"
+    links:
+    - timesheet
+    - server
+    - redis
+
+  server:
+    image: bharatari/newshub_server
+    environment:
+    - NODE_ENV=production
+    restart: always
+    env_file: server.env
+    links:
+    - redis
+
+  timesheet:
+    image: bharatari/newshub_timesheet
+    environment:
+    - NODE_ENV=production
+    restart: always
+    env_file: timesheet.env
+    links:
+    - redis
