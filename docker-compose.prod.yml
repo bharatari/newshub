@@ -10,7 +10,7 @@ services:
     ports:
     - "80:80"
     links:
-    - timesheet
+    - events
     - server
     - redis
 
@@ -23,11 +23,11 @@ services:
     links:
     - redis
 
-  timesheet:
-    image: bharatari/newshub_timesheet
+  events:
+    image: bharatari/newshub_events
     environment:
     - NODE_ENV=production
     restart: always
-    env_file: timesheet.env
+    env_file: events.env
     links:
     - redis

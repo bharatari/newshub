@@ -23,8 +23,8 @@ module.exports = {
       ],
     },
     {
-      hostname: 'http://timesheet:8080',
-      name: 'newshub-timesheet',
+      hostname: 'http://events:8080',
+      name: 'newshub-events',
       endpoints: [
         '/api/event',
         '/api/log',

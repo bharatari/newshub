@@ -4,7 +4,7 @@ services:
     build: .
     env_file: .env
     links:
-    - timesheet
+    - events
     - server
     - redis
 
@@ -15,9 +15,9 @@ services:
     - postgres
     - redis
 
-  timesheet:
-    build: ../Services/newshub-timesheet/
-    env_file: ../Services/newshub-timesheet/.env
+  events:
+    build: ../Services/newshub-events/
+    env_file: ../Services/newshub-events/.env
     links:
     - postgres
     - redis
