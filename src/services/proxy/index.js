@@ -34,6 +34,10 @@ module.exports = async (ctx, next) => {
         const response = await data.put(path, body, headers);
 
         data.respond(ctx, response, next);
+      } else if (method === 'patch') {
+        const response = await data.patch(path, body, headers);
+
+        data.respond(ctx, response, next);
       } else if (method === 'delete') {
         const response = await data.delete(path, headers);
 

@@ -104,6 +104,18 @@ module.exports = {
       gzip: true,
     });
   },
+  patch(path, body, headers) {
+    const service = this.findService(path);
+
+    return request({
+      method: 'PATCH',
+      url: `${service}${path}`,
+      headers,
+      body,
+      json: true,
+      gzip: true,
+    });
+  },
   delete(path, headers) {
     const service = this.findService(path);
  
