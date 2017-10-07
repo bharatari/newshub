@@ -4,7 +4,6 @@ const Koa = require('koa');
 const cors = require('kcors');
 const body = require('koa-body');
 const router = require('koa-router')();
-const serve = require('koa-static');
 const jwt = require('koa-jwt');
 const path = require('path');
 const services = require('./services');
@@ -16,7 +15,6 @@ const port = process.env.PORT || 3030;
 services(router);
 
 app
-  .use(serve(path.join(__dirname, '/public')))
   .use(body({
     multipart: true,
   }))

@@ -8,8 +8,6 @@ module.exports = (router) => {
     const headers = ctx.request.headers;
     const userId = ctx.state.user ? ctx.state.user.id : '';
 
-    const barcode = encodeURIComponent(body.barcode);
-
     try {
       headers['newshub-user-id'] = userId;
     
