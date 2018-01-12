@@ -6,7 +6,7 @@ module.exports = (router) => {
     const path = ctx.request.path;
     const body = ctx.request.body;
     const headers = ctx.request.headers;
-    const userId = ctx.state.user ? ctx.state.user.id : '';
+    const userId = ctx.state.user ? ctx.state.user.userId : '';
 
     try {
       headers['newshub-user-id'] = userId;
