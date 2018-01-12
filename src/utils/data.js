@@ -133,7 +133,7 @@ module.exports = {
   },
   handleError(ctx, e, next) {
     if (e.statusCode) {
-      ctx.throw(e.statusCode, e.error);
+      ctx.throw(e.statusCode, new Error(JSON.stringify(e.error)));
     } else {
       ctx.throw(500);
     }

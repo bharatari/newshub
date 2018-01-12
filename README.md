@@ -16,11 +16,20 @@ An API gateway for NewsHub.
 
 * newshub-email: Email functionality
 
+# Deployment Guide
+
+1. Copy `docker-compose.yml` and `docker-compose.prod.yml` files to remote server
+2. Build services locally using `docker compose build`
+3. Push services to repository with `docker tag gateway_<service> <user>/newshub_<service>`
+4. On remote server, `docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull`
+5. On remote server, run `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up`
+
 # Common Commands
 
      docker-compose build
      docker-compose up --build
      docker-compose up -d
+     docker-compose run npm test
      docker tag gateway_<service> <user>/newshub_<service>
      docker push <user>/newshub_<service>
 

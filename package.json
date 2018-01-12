@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "test": ""
+    "test": "set NODE_ENV=test&& npm run mocha && npm run istanbul",
+    "lint": "eslint src test",
+    "lint:fix": "eslint src test --fix",
+    "mocha": "mocha --require test/bootstrap.test.js test/ --recursive",
+    "istanbul": "istanbul cover node_modules/mocha/bin/_mocha --require test/bootstrap.test.js -- test/ --recursive && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
-  "author": "",
+  "author": "Bharat Arimilli",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^4.0.0",
@@ -19,5 +23,15 @@
     "lodash": "^4.17.4",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chai-http": "^3.0.0",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.8.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^4.0.1",
+    "request": "^2.83.0"
   }
 }
