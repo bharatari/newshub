@@ -25,7 +25,7 @@ module.exports = function () {
 
   const oldSetup = app.setup;
 
-  app.set('sequelizeClient', sequelize);
+  app.set('sequelize', sequelize);
 
   app.setup = function (...args) {
     const result = oldSetup.apply(this, args);

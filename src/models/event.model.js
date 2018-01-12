@@ -3,8 +3,8 @@
 const Sequelize = require('sequelize');
 
 module.exports = function (app) {
-  const sequelizeClient = app.get('sequelizeClient');
-  const event = sequelizeClient.define('event', {
+  const sequelize = app.get('sequelize');
+  const event = sequelize.define('event', {
     name: {
       type: Sequelize.TEXT,
       allowNull: false,
