@@ -1,5 +1,3 @@
-const modelUtils = require('../utils/models');
-
 module.exports = function (options) {
   return async function (hook) {
     const models = hook.app.get('sequelize').models;
