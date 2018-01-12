@@ -19,10 +19,12 @@ An API gateway for NewsHub.
 # Deployment Guide
 
 1. Copy `docker-compose.yml` and `docker-compose.prod.yml` files to remote server
-2. Build services locally using `docker compose build`
-3. Push services to repository with `docker tag gateway_<service> <user>/newshub_<service>`
-4. On remote server, `docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull`
-5. On remote server, run `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up`
+2. Copy `.env` files for each service to remote server
+3. Build services locally using `docker-compose build`
+4. Tag services with `docker tag gateway_<service> <user>/newshub_<service>`
+5. Push services with `docker push <user>/newshub_<service>`
+5. On remote server, `docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull`
+6. On remote server, run `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up`
 
 # Common Commands
 
