@@ -21,14 +21,14 @@ module.exports = function (app) {
       defaultValue: false,
     },
     organizationId: {
-      type: Sequelize.TEXT,
+      type: Sequelize.INTEGER,
       allowNull: false,
     },
     notes: {
       type: Sequelize.TEXT,
     },
     userId: {
-      type: Sequelize.TEXT,
+      type: Sequelize.INTEGER,
       allowNull: false,
     }
   }, {
@@ -39,10 +39,8 @@ module.exports = function (app) {
     }
   });
 
-  event.associate = function (models) { // eslint-disable-line no-unused-vars
+  event.associate = function (models) {
     event.hasMany(models.log);
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
 
   return event;

@@ -1,33 +1,27 @@
 const request = require('request-promise-native');
 const querystring = require('querystring');
 const errors = require('feathers-errors');
+const access = require('../utils/access');
+const data = require('../utils/data');
 
 module.exports = function (options) {
   return async function (hook) {
-    hook.params.user = {
-      currentOrganizationId: hook.params.headers['newshub-organization-id'],
-      id: hook.params.headers['newshub-user-id'],
-    };
-
-    const query = {
-      service: options.service,
-      method: hook.method,
-    };
-
-    const qstring = querystring.stringify(query);
-
     try {
-      const can = await request.get({
-        url: `http://gateway:8080/api/role?${qstring}`,
-        headers: {
-          'content-type': 'application/json; charset=utf-8',
-          'authorization': hook.params.headers['authorization'],
-        },
-      });
+      const authorization = hook.params.headers['authorization'];
+      const userId = hook.params.headers['newshub-user-id'];
 
-      return hook;
+      hook.params.user = await data.getUser(authorization, userId);
+      hook.params.authorization = authorization;
+  
+      const can = await access.can(hook.params.authorization, options.service, hook.method);
+      
+      if (can) {
+        return hook;
+      } else {
+        throw new errors.Forbidden();
+      }
     } catch (e) {
-      throw new errors.Forbidden();
+      throw e;
     }
   };
 };

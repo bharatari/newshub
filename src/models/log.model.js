@@ -4,6 +4,7 @@ const Sequelize = require('sequelize');
 
 module.exports = function (app) {
   const sequelize = app.get('sequelize');
+
   const log = sequelize.define('log', {
     type: {
       type: Sequelize.TEXT,
@@ -11,11 +12,11 @@ module.exports = function (app) {
       values: ['clock-in', 'clock-out'],
     },
     targetUserId: {
-      type: Sequelize.TEXT,
+      type: Sequelize.INTEGER,
       allowNull: false,
     },
     userId: {
-      type: Sequelize.TEXT,
+      type: Sequelize.INTEGER,
       allowNull: false,
     },
     meta: {
@@ -24,7 +25,7 @@ module.exports = function (app) {
       defaultValue: {},
     },
     organizationId: {
-      type: Sequelize.TEXT,
+      type: Sequelize.INTEGER,
       allowNull: false,
     },
   }, {
@@ -35,9 +36,8 @@ module.exports = function (app) {
     }
   });
 
-  log.associate = function (models) { // eslint-disable-line no-unused-vars
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+  log.associate = function (models) {
+    log.belongsTo(models.event);
   };
 
   return log;

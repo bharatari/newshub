@@ -1,10 +1,8 @@
+const errors = require('feathers-errors');
+
 module.exports = function (options) {
   return async function (hook) {
     const models = hook.app.get('sequelize').models;
-    
-    if (hook.params.skip) {
-      return hook;
-    }
 
     if (hook.params.provider) {
       if (hook.method === 'update' || hook.method === 'patch' || hook.method === 'get') {
