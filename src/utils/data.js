@@ -9,10 +9,8 @@ module.exports = {
       name: 'newshub-server',
       endpoints: [
         '/api/building',
-        '/api/device',
         '/api/image',
         '/api/organization',
-        '/api/reservation',
         '/api/reset-password',
         '/api/role',
         '/api/room',
@@ -28,6 +26,14 @@ module.exports = {
       endpoints: [
         '/api/event',
         '/api/log',
+      ],
+    },
+    { 
+      hostname: 'http://reservations:8080',
+      name: 'newshub-reservations',
+      endpoints: [
+        '/api/device',
+        '/api/reservation',
       ],
     },
   ],

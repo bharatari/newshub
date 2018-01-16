@@ -31,3 +31,12 @@ services:
     env_file: events.env
     links:
     - redis
+
+  reservations:
+    image: bharatari/newshub_reservations
+    environment:
+    - NODE_ENV=production
+    restart: always
+    env_file: events.env
+    links:
+    - redis
