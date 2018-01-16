@@ -15,6 +15,10 @@ module.exports = function (app) {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
+    targetUser: {
+      type: Sequelize.JSONB,
+      allowNull: false,
+    },
     userId: {
       type: Sequelize.INTEGER,
       allowNull: false,
