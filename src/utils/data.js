@@ -4,7 +4,7 @@
    async getUser(authorization, id) {
      try {
        const user = await request.get({
-         url: `http://gateway:8080/api/user/${id}`,
+         url: `http://gateway/api/user/${id}`,
          headers: {
            'content-type': 'application/json; charset=utf-8',
            'authorization': authorization,

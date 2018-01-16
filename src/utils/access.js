@@ -25,7 +25,7 @@ module.exports = {
 
     try {
       const can = await request.get({
-        url: `http://gateway:8080/api/role?${qstring}`,
+        url: `http://gateway/api/role?${qstring}`,
         headers: {
           'content-type': 'application/json; charset=utf-8',
           'authorization': authorization,
@@ -56,7 +56,7 @@ module.exports = {
 
     try {
       const has = await request.get({
-        url: `http://gateway:8080/api/role?${qstring}`,
+        url: `http://gateway/api/role?${qstring}`,
         headers: {
           'content-type': 'application/json; charset=utf-8',
           'authorization': authorization,
@@ -83,7 +83,7 @@ module.exports = {
 
     try {
       const is = await request.get({
-        url: `http://gateway:8080/api/role?${qstring}`,
+        url: `http://gateway/api/role?${qstring}`,
         headers: {
           'content-type': 'application/json; charset=utf-8',
           'authorization': authorization,
