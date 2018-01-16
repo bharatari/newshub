@@ -4,6 +4,7 @@ services:
     build: .
     env_file: .env
     links:
+    - reservations
     - events
     - server
     - redis

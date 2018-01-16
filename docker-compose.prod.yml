@@ -10,6 +10,7 @@ services:
     ports:
     - "80:80"
     links:
+    - reservations
     - events
     - server
     - redis
