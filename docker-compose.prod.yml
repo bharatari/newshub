@@ -37,6 +37,6 @@ services:
     environment:
     - NODE_ENV=production
     restart: always
-    env_file: events.env
+    env_file: reservations.env
     links:
     - redis
