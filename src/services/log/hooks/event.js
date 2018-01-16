@@ -1,9 +1,11 @@
+const errors = require('@feathersjs/errors');
+
 module.exports = function (options) {
   return async function (hook) {
-    const eventId = hook.data.eventId;
-
     const models = hook.app.get('sequelize').models;
   
+    const eventId = hook.data.eventId;
+    
     try {
       const event = await models.event.count({
         where: {

@@ -16,8 +16,8 @@ module.exports = {
     get: [],
     create: [
       event(),
-      type(),
       process(),
+      type(),
     ],
     update: [],
     patch: [],
