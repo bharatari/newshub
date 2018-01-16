@@ -1,6 +1,6 @@
 const request = require('request-promise-native');
 const querystring = require('querystring');
-const errors = require('feathers-errors');
+const errors = require('@feathersjs/errors');
 const access = require('../utils/access');
 const data = require('../utils/data');
 

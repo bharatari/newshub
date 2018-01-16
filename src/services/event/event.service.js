@@ -2,7 +2,6 @@
 const createService = require('feathers-sequelize');
 const createModel = require('../../models/event.model');
 const hooks = require('./event.hooks');
-const filters = require('./event.filters');
 
 module.exports = function () {
   const app = this;
@@ -26,8 +25,4 @@ module.exports = function () {
   const service = app.service('/api/event');
 
   service.hooks(hooks);
-
-  if (service.filter) {
-    service.filter(filters);
-  }
 };
