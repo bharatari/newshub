@@ -7,6 +7,7 @@ module.exports = (router) => {
     const body = ctx.request.body;
     const headers = ctx.request.headers;
     const userId = ctx.state.user ? ctx.state.user.userId : '';
+    const barcode = body.barcode;
 
     try {
       headers['newshub-user-id'] = userId;
@@ -29,7 +30,11 @@ module.exports = (router) => {
         'authorization': headers['authorization'],
       }));
 
-      const targetUserId = targetUser[0].id;
+      let targetUserId;
+
+      if (targetUser) {
+        targetUserId = targetUser[0].id;
+      }
 
       const log = await data.post('/api/log', {
         userId,
