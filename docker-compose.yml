@@ -2,9 +2,9 @@ version: '3'
 services:
   gateway:
     ports:
-    - "8080:8080"
+    - "8080:80"
     environment:
-    - PORT=8080
+    - PORT=80
 
   server:
     ports:
