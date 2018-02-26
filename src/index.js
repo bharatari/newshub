@@ -14,5 +14,5 @@ process.on('unhandledRejection', (reason, p) =>
 );
 
 server.on('listening', () =>
-  logger.info('Feathers application started on http://%s:%d', app.get('host'), port)
+  logger.info('NewsHub Server v%s started on http://%s:%d', process.env.npm_package_version, app.get('host'), port)
 );

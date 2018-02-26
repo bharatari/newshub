@@ -25,8 +25,12 @@ module.exports = {
       unique(),
       addToOrganization(),
     ],
-    update: [],
-    patch: [],
+    update: [
+      hooks.disallow(),
+    ],
+    patch: [
+      unique(),
+    ],
     remove: []
   },
 
