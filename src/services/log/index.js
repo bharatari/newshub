@@ -25,15 +25,27 @@ module.exports = (router) => {
 
       const qstring = querystring.stringify(query);
 
-      const targetUser = JSON.parse(await data.get(`/api/user`, `?${qstring}`, {
-        'content-type': 'application/json; charset=utf-8',
-        'authorization': headers['authorization'],
-      }));
+      let targetUser;
+
+      try {
+        targetUser = JSON.parse(await data.get(`/api/user`, `?${qstring}`, {
+          'content-type': 'application/json; charset=utf-8',
+          'authorization': headers['authorization'],
+        }));
+      } catch (e) {
+        throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
+      }
 
       let targetUserId;
 
       if (targetUser) {
-        targetUserId = targetUser[0].id;
+        if (targetUser[0]) {
+          targetUserId = targetUser[0].id;
+        } else {
+          throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
+        }
+      } else {
+        throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
       }
 
       const log = await data.post('/api/log', {
@@ -52,8 +64,6 @@ module.exports = (router) => {
       data.respond(ctx, log, next);
     } catch (e) {
       data.handleError(ctx, e, next);
-
-      next();
     }
   });
 };

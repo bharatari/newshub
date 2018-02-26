@@ -138,12 +138,18 @@ module.exports = {
     next();
   },
   handleError(ctx, e, next) {
-    if (e.statusCode) {
-      ctx.throw(e.statusCode, new Error(JSON.stringify(e.error)));
+    if (_.isError(e)) {
+      if (e.statusCode) {
+        ctx.throw(e.statusCode, e.error);
+      } else {
+        ctx.throw(500);
+      }  
     } else {
-      ctx.throw(500);
+      ctx.throw(e.statusCode, {
+        message: e.message,
+      });
     }
-
+    
     next();
   },
   async getOrganizationId(userId, headers) {

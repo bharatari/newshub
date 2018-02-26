@@ -45,8 +45,6 @@ module.exports = async (ctx, next) => {
       }
     } catch (e) {
       data.handleError(ctx, e, next);
-
-      next();
     }
   } else {
     next();

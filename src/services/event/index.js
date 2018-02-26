@@ -27,8 +27,6 @@ module.exports = (router) => {
       data.respond(ctx, response, next);
     } catch (e) {
       data.handleError(ctx, e, next);
-
-      next();
     }
   });
 };
