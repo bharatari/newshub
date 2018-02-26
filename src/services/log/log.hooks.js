@@ -4,6 +4,7 @@ const process = require('./hooks/process');
 const access = require('../../hooks/access');
 const protectOrganization = require('../../hooks/protectOrganization');
 const restrictChangeOrganization = require('../../hooks/restrictChangeOrganization');
+const hooks = require('feathers-hooks-common');
 
 module.exports = {
   before: {
@@ -19,7 +20,9 @@ module.exports = {
       process(),
       type(),
     ],
-    update: [],
+    update: [
+      hooks.disallow(),
+    ],
     patch: [],
     remove: []
   },
