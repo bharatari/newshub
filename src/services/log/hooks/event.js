@@ -6,23 +6,23 @@ module.exports = function (options) {
     const models = hook.app.get('sequelize').models;
   
     const eventId = hook.data.eventId;
-    
+
     try {
-      const event = await models.event.count({
+      const event = await models.event.findOne({
         where: {
           id: eventId,
         },
       });
-  
+
       if (!event) {
-        throw new errors.GeneralError('Event does not exist');
+        throw new errors.BadRequest('Event does not exist');
       } else {
         if (event.closed) {
-          throw new errors.GeneralError('Event is closed');
+          throw new errors.BadRequest('EVENT_CLOSED');
         } else if (moment().isAfter(event.endDate)) {
-          throw new errors.GeneralError('Event is closed');
+          throw new errors.BadRequest('EVENT_CLOSED');
         } else if (moment().isBefore(event.startDate)) {
-          throw new errors.GeneralError('Event has not started yet');
+          throw new errors.BadRequest('EVENT_NOT_STARTED');
         }
 
         return hook;
