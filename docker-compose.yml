@@ -2,9 +2,9 @@ version: '3'
 services:
   gateway:
     ports:
-    - "8080:8080"
+    - "8080:80"
     environment:
-    - PORT=8080
+    - PORT=80
 
   server:
     ports:
@@ -12,9 +12,15 @@ services:
     environment:
     - PORT=8080
 
-  timesheet:
+  events:
     ports:
     - "8082:8080"
+    environment:
+    - PORT=8080
+
+  reservations:
+    ports:
+    - "8083:8080"
     environment:
     - PORT=8080
 

@@ -7,7 +7,7 @@ module.exports = (router) => {
     const query = ctx.request.search;
     const body = ctx.request.body;
     const headers = ctx.request.headers;
-    const userId = ctx.state.user ? ctx.state.user.id : '';
+    const userId = ctx.state.user ? ctx.state.user.userId : '';
 
     try {
       headers['newshub-user-id'] = userId;
@@ -27,8 +27,6 @@ module.exports = (router) => {
       data.respond(ctx, response, next);
     } catch (e) {
       data.handleError(ctx, e, next);
-
-      next();
     }
   });
 };

@@ -8,8 +8,8 @@ module.exports = async (ctx, next) => {
     const method = ctx.request.method.toLowerCase();
     const body = ctx.request.body;
     const headers = ctx.request.headers;
-    const userId = ctx.state.user ? ctx.state.user.id : '';
-
+    const userId = ctx.state.user ? ctx.state.user.userId : '';
+    
     try {
       headers['newshub-user-id'] = userId;
     
@@ -34,6 +34,10 @@ module.exports = async (ctx, next) => {
         const response = await data.put(path, body, headers);
 
         data.respond(ctx, response, next);
+      } else if (method === 'patch') {
+        const response = await data.patch(path, body, headers);
+
+        data.respond(ctx, response, next);
       } else if (method === 'delete') {
         const response = await data.delete(path, headers);
 
@@ -41,8 +45,6 @@ module.exports = async (ctx, next) => {
       }
     } catch (e) {
       data.handleError(ctx, e, next);
-
-      next();
     }
   } else {
     next();

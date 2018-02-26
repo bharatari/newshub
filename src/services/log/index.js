@@ -6,9 +6,8 @@ module.exports = (router) => {
     const path = ctx.request.path;
     const body = ctx.request.body;
     const headers = ctx.request.headers;
-    const userId = ctx.state.user ? ctx.state.user.id : '';
-
-    const barcode = encodeURIComponent(body.barcode);
+    const userId = ctx.state.user ? ctx.state.user.userId : '';
+    const barcode = body.barcode;
 
     try {
       headers['newshub-user-id'] = userId;
@@ -26,12 +25,28 @@ module.exports = (router) => {
 
       const qstring = querystring.stringify(query);
 
-      const targetUser = JSON.parse(await data.get(`/api/user`, `?${qstring}`, {
-        'content-type': 'application/json; charset=utf-8',
-        'authorization': headers['authorization'],
-      }));
+      let targetUser;
 
-      const targetUserId = targetUser[0].id;
+      try {
+        targetUser = JSON.parse(await data.get(`/api/user`, `?${qstring}`, {
+          'content-type': 'application/json; charset=utf-8',
+          'authorization': headers['authorization'],
+        }));
+      } catch (e) {
+        throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
+      }
+
+      let targetUserId;
+
+      if (targetUser) {
+        if (targetUser[0]) {
+          targetUserId = targetUser[0].id;
+        } else {
+          throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
+        }
+      } else {
+        throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
+      }
 
       const log = await data.post('/api/log', {
         userId,
@@ -49,8 +64,6 @@ module.exports = (router) => {
       data.respond(ctx, log, next);
     } catch (e) {
       data.handleError(ctx, e, next);
-
-      next();
     }
   });
 };

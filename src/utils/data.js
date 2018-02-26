@@ -9,10 +9,8 @@ module.exports = {
       name: 'newshub-server',
       endpoints: [
         '/api/building',
-        '/api/device',
         '/api/image',
         '/api/organization',
-        '/api/reservation',
         '/api/reset-password',
         '/api/role',
         '/api/room',
@@ -23,11 +21,19 @@ module.exports = {
       ],
     },
     {
-      hostname: 'http://timesheet:8080',
-      name: 'newshub-timesheet',
+      hostname: 'http://events:8080',
+      name: 'newshub-events',
       endpoints: [
         '/api/event',
         '/api/log',
+      ],
+    },
+    { 
+      hostname: 'http://reservations:8080',
+      name: 'newshub-reservations',
+      endpoints: [
+        '/api/device',
+        '/api/reservation',
       ],
     },
   ],
@@ -104,6 +110,18 @@ module.exports = {
       gzip: true,
     });
   },
+  patch(path, body, headers) {
+    const service = this.findService(path);
+
+    return request({
+      method: 'PATCH',
+      url: `${service}${path}`,
+      headers,
+      body,
+      json: true,
+      gzip: true,
+    });
+  },
   delete(path, headers) {
     const service = this.findService(path);
  
@@ -120,12 +138,18 @@ module.exports = {
     next();
   },
   handleError(ctx, e, next) {
-    if (e.statusCode) {
-      ctx.throw(e.statusCode, e.error);
+    if (_.isError(e)) {
+      if (e.statusCode) {
+        ctx.throw(e.statusCode, e.error);
+      } else {
+        ctx.throw(500);
+      }  
     } else {
-      ctx.throw(500);
+      ctx.throw(e.statusCode, {
+        message: e.message,
+      });
     }
-
+    
     next();
   },
   async getOrganizationId(userId, headers) {
