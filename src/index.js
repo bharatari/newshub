@@ -3,5 +3,5 @@ const port = process.env.PORT || 3030;
 const server = app.listen(port);
 
 server.on('listening', () =>
-  console.log(`Gateway started on port ${port}`)
+  console.log(`NewsHub Gateway v${process.env.npm_package_version} started on port ${port}`)
 );
