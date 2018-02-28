@@ -21,10 +21,13 @@ An API gateway for NewsHub.
 1. Copy `docker-compose.yml` and `docker-compose.prod.yml` files to remote server
 2. Copy `.env` files for each service to remote server
 3. Build services locally using `docker-compose build`
-4. Tag services with `docker tag gateway_<service> <user>/newshub_<service>`
+4. Tag services with `docker tag gateway_<service> <user>/newshub_<service>:<version>`
 5. Push services with `docker push <user>/newshub_<service>`
-5. On remote server, `docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull`
-6. On remote server, run `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up`
+6. On remote server, edit `docker-compose.prod.yml` and update each service's image with it's new tag/version
+7. On remote server, `docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull`
+8. On remote server, run `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up`
+
+If you omit the tag/version when pushing the images, they will automatically be tagged as `latest`. The `docker-compose.prod.yml` included in this repository by default pulls from the `latest` tag because image versions are initially omitted. Once in a production environment, you should be sure to push images with versions and then reference these specific versions in the `docker-compose.prod.yml` file. Explicitly stating versions is the only way to know exactly what you are deploying each time you run docker-compose. Using versioning also allows you to quickly rollback to a previous version of an image in the case of any significant problems. For these reasons, it is highly recommended not to continue using the `latest` tag in production.
 
 # Common Commands
 
