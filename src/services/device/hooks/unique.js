@@ -1,4 +1,5 @@
 const errors = require('@feathersjs/errors');
+const _ = require('lodash');
 
 module.exports = function (options) {
   return async function (hook) {
