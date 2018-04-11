@@ -15,7 +15,7 @@ module.exports = function () {
           targetUserId: userId,
           organizationId,
         },
-        order: [['createdAt', 'DESC']],
+        order: [['date', 'DESC']],
       });
   
       if (log) {
@@ -24,8 +24,8 @@ module.exports = function () {
           const yesterday = moment().subtract(24, 'hours');
           const oneMinuteAgo = moment().subtract(1, 'minute');
 
-          if (moment(log.createdAt).isBetween(yesterday, now)) {
-            if (moment(log.createdAt).isBetween(oneMinuteAgo, now)) {
+          if (moment(log.date).isBetween(yesterday, now)) {
+            if (moment(log.date).isBetween(oneMinuteAgo, now)) {
               // A clock-in was already recorded within 1 minute
               // Just return previous clock-in
               hook.result = log;

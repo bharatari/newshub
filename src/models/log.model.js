@@ -32,6 +32,11 @@ module.exports = function (app) {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
+    date: {
+      type: Sequelize.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.NOW,
+    },
   }, {
     hooks: {
       beforeCount(options) {
