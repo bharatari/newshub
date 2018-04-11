@@ -8,6 +8,8 @@ module.exports = (router) => {
     const headers = ctx.request.headers;
     const userId = ctx.state.user ? ctx.state.user.userId : '';
     const barcode = body.barcode;
+    const date = body.date;
+    const type = body.type;
 
     try {
       headers['newshub-user-id'] = userId;
@@ -51,15 +53,16 @@ module.exports = (router) => {
       const log = await data.post('/api/log', {
         userId,
         targetUserId,
+        targetUser: targetUser[0],
         eventId: body.eventId,
+        date,
+        type,
       }, {
         'content-type': 'application/json; charset=utf-8',
         'authorization': headers['authorization'],
         'newshub-user-id': headers['newshub-user-id'],
         'newshub-organization-id': headers['newshub-organization-id'],
       });
-
-      log.targetUser = targetUser[0];
 
       data.respond(ctx, log, next);
     } catch (e) {
