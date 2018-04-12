@@ -1,5 +1,6 @@
 const errors = require('@feathersjs/errors');
 const moment = require('moment');
+const access = require('../../../utils/access');
 
 module.exports = function (options) {
   return async function (hook) {
@@ -9,7 +10,13 @@ module.exports = function (options) {
 
     // Creating a log manually, let it go through
     if (hook.data.date && hook.data.type) {
-      return hook;
+      const hasManualLog = access.has(hook.params.authorization, 'log:manual');
+
+      if (hasManualLog) {
+        return hook;
+      } else {
+        return errors.Forbidden();
+      }
     }
 
     try {
