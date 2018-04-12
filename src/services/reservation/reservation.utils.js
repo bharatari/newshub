@@ -63,7 +63,7 @@ module.exports = {
           return hook;
         }
       } else {
-        throw new errors.NotAuthenticated('MASTER_SPECIAL_REQUEST');
+        throw new errors.Forbidden('MASTER_SPECIAL_REQUEST');
       }
     } else {
       const canApprove = await access.can(hook.params.authorization, 'reservation', 'update', 'approved', hook.id);
@@ -80,7 +80,7 @@ module.exports = {
           return hook;
         }
       } else {
-        throw new errors.NotAuthenticated('Must have permission to update reservation status.');
+        throw new errors.Forbidden('Must have permission to update reservation status.');
       }
     }
   },
@@ -99,7 +99,7 @@ module.exports = {
         return hook;
       }
     } else {
-      throw new errors.NotAuthenticated('Must have permission to update reservation status.');
+      throw new errors.Forbidden('Must have permission to update reservation status.');
     }
   },
   async checkIn(hook, models, redis, userId, reservation, data) {
@@ -117,7 +117,7 @@ module.exports = {
         return hook;
       }
     } else {
-      throw new errors.NotAuthenticated('Must have permission to update reservation status.');
+      throw new errors.Forbidden('Must have permission to update reservation status.');
     }
   },
   async disable(hook, models, redis, userId, reservation, data) {
@@ -135,7 +135,7 @@ module.exports = {
         return hook;
       }
     } else {
-      throw new errors.NotAuthenticated('Must have permission to update reservation status.');
+      throw new errors.Forbidden('Must have permission to update reservation status.');
     }
   },
   async adminNotes(hook, models, redis, userId, reservation, data) {
@@ -151,7 +151,7 @@ module.exports = {
         return hook;
       }
     } else {
-      throw new errors.NotAuthenticated('Must have permission to update reservation admin notes.');
+      throw new errors.Forbidden('Must have permission to update reservation admin notes.');
     }
   },
   overlaps(startDate, endDate) {

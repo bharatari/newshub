@@ -24,7 +24,7 @@ module.exports = function (options) {
       } else if (hook.reservation.userId === hook.params.user.id) {
         return hook;
       } else {
-        throw new errors.NotAuthenticated('Must be an admin or owner to delete this');
+        throw new errors.Forbidden('Must be an admin or owner to delete this');
       }
     }).catch((err) => {
       throw err;
