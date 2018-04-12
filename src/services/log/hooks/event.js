@@ -7,6 +7,11 @@ module.exports = function (options) {
   
     const eventId = hook.data.eventId;
 
+    // Creating a log manually, let it go through
+    if (hook.data.date && hook.data.type) {
+      return hook;
+    }
+
     try {
       const event = await models.event.findOne({
         where: {

@@ -8,6 +8,11 @@ module.exports = function () {
     const userId = hook.data.targetUserId;
     const organizationId = hook.data.organizationId;
 
+    // If we've already set a type, use it
+    if (hook.data.type) {
+      return hook;
+    }
+
     try {
       const log = await models.log.findOne({
         where: {
