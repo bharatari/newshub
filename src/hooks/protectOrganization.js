@@ -12,7 +12,7 @@ module.exports = function (options) {
           }
         }).then((object) => {
           if (object.organizationId !== hook.params.user.currentOrganizationId) {
-            throw new errors.NotAuthenticated();
+            throw new errors.Forbidden();
           }
 
           return hook;
