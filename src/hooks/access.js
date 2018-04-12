@@ -21,7 +21,11 @@ module.exports = function (options) {
         throw new errors.Forbidden();
       }
     } catch (e) {
-      throw e;
+      if (e.statusCode === 401) {
+        throw new errors.NotAuthenticated(e);
+      } else {
+        throw e;
+      }
     }
   };
 };
