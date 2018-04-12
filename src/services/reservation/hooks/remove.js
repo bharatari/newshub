@@ -1,4 +1,5 @@
 const errors = require('@feathersjs/errors');
+const data = require('../../../utils/data');
 const access = require('../../../utils/access');
 
 module.exports = function (options) {
@@ -13,18 +14,19 @@ module.exports = function (options) {
     }).then(async (reservation) => {
       const canDelete = await access.can(hook.params.authorization, 'reservation', 'delete', null, hook.id);
 
-      if (reservation.dataValues.approved) {
-        if (canDelete) {
+      if (canDelete) {
+        const users = await data.getDeviceManagers(hook.params.authorization);
+
+        try {
+          await email.queueEmails(users, null, hook.params.user.fullName, 'DELETED_RESERVATION');
+
           return hook;
-        } else {
-          throw new errors.BadRequest('You cannot delete a reservation after it has been approved');
+        } catch (e) {
+          // Don't throw error just because email didn't send
+          return hook;
         }
-      } else if (canDelete) {
-        return hook;
-      } else if (hook.reservation.userId === hook.params.user.id) {
-        return hook;
       } else {
-        throw new errors.Forbidden('Must be an admin or owner to delete this');
+        throw new errors.Forbidden('Must have the permission to delete this');
       }
     }).catch((err) => {
       throw err;
