@@ -45,11 +45,9 @@ module.exports = {
    * 
    * @public
    */
-  async has(authorization, permission, model, id) {
+  async has(authorization, role) {
     const query = {
-      permission,
-      model,
-      id
+      role,
     };
 
     const qstring = querystring.stringify(query);

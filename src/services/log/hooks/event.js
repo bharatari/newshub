@@ -10,12 +10,12 @@ module.exports = function (options) {
 
     // Creating a log manually, let it go through
     if (hook.data.date && hook.data.type) {
-      const hasManualLog = access.has(hook.params.authorization, 'log:manual');
+      const hasManualLog = await access.has(hook.params.authorization, 'log:manual');
 
       if (hasManualLog) {
         return hook;
       } else {
-        return errors.Forbidden();
+        throw new errors.Forbidden();
       }
     }
 
