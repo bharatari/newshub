@@ -8,13 +8,10 @@ module.exports = {
       hostname: 'http://server:8080',
       name: 'newshub-server',
       endpoints: [
-        '/api/building',
         '/api/image',
         '/api/organization',
         '/api/reset-password',
         '/api/role',
-        '/api/room',
-        '/api/room-reservation',
         '/api/signup-token',
         '/api/user',
         '/api/login',
