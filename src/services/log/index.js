@@ -15,10 +15,14 @@ module.exports = (router) => {
       headers['newshub-user-id'] = userId;
     
       if (userId) {
-        headers['newshub-organization-id'] = await data.getOrganizationId(userId, {
-          'content-type': 'application/json; charset=utf-8',
-          'authorization': headers['authorization'],
-        });
+        try {
+          headers['newshub-organization-id'] = await data.getOrganizationId(userId, {
+            'content-type': 'application/json; charset=utf-8',
+            'authorization': headers['authorization'],
+          });
+        } catch (e) {
+          throw { statusCode: 401, message: 'NOT_AUTHENTICATED' };
+        }
       }
 
       const query = {
@@ -35,7 +39,11 @@ module.exports = (router) => {
           'authorization': headers['authorization'],
         }));
       } catch (e) {
-        throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
+        if (e.statusCode === 401) {
+          throw { statusCode: 401, message: 'NOT_AUTHENTICATED' };
+        } else {
+          throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
+        }
       }
 
       let targetUserId;

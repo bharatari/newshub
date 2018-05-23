@@ -31,7 +31,7 @@ An API gateway for NewsHub.
      docker-compose build
      docker-compose up --build
      docker-compose up -d
-     docker-compose run npm test
+     docker-compose run -e NODE_ENV=test npm test
      docker tag gateway_<service> <user>/newshub_<service>
      docker push <user>/newshub_<service>
 
