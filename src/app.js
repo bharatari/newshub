@@ -7,6 +7,7 @@ const error = require('koa-json-error');
 const path = require('path');
 const services = require('./services');
 const proxy = require('./services/proxy');
+const _ = require('lodash');
 
 const app = new Koa();
 
