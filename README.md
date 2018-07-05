@@ -8,7 +8,7 @@ An API gateway for NewsHub.
 
 * [newshub-client](https://github.com/bharatari/newshub-client): NewsHub's client built on React and Redux
 * [newshub-client-server](https://github.com/bharatari/newshub-client-server): NewsHub's client server built on Koa
-* [newshub-server](https://github.com/bharatari/newshub-server)
+* [newshub-authentication](https://github.com/bharatari/newshub-authentication)
 * [newshub-gateway](https://github.com/bharatari/newshub-gateway): API gateway
 * [newshub-events](https://github.com/bharatari/newshub-events): Events functionality
 
