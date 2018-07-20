@@ -1,5 +1,6 @@
 const data = require('../../utils/data');
 const querystring = require('querystring');
+const _ = require('lodash');
 
 module.exports = (router) => {
   router.post('/api/log', async (ctx, next) => {
@@ -10,6 +11,8 @@ module.exports = (router) => {
     const barcode = body.barcode;
     const date = body.date;
     const type = body.type;
+
+    let targetUserId = body.targetUserId;
 
     try {
       headers['newshub-user-id'] = userId;
@@ -34,10 +37,31 @@ module.exports = (router) => {
       let targetUser;
 
       try {
-        targetUser = JSON.parse(await data.get(`/api/user`, `?${qstring}`, {
-          'content-type': 'application/json; charset=utf-8',
-          'authorization': headers['authorization'],
-        }));
+        if (_.isNil(targetUserId)) {
+          targetUser = JSON.parse(await data.get(`/api/user`, `?${qstring}`, {
+            'content-type': 'application/json; charset=utf-8',
+            'authorization': headers['authorization'],
+          }));
+
+          if (targetUser) {
+            if (targetUser[0]) {
+              targetUserId = targetUser[0].id;
+            } else {
+              throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
+            }
+          } else {
+            throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
+          }
+
+          targetUser = targetUser[0];
+        } else {
+          targetUser = JSON.parse(await data.get(`/api/user/${targetUserId}`, '', {
+            'content-type': 'application/json; charset=utf-8',
+            'authorization': headers['authorization'],
+          }));
+
+          targetUserId = targetUser.id;
+        }
       } catch (e) {
         if (e.statusCode === 401) {
           throw { statusCode: 401, message: 'NOT_AUTHENTICATED' };
@@ -46,22 +70,10 @@ module.exports = (router) => {
         }
       }
 
-      let targetUserId;
-
-      if (targetUser) {
-        if (targetUser[0]) {
-          targetUserId = targetUser[0].id;
-        } else {
-          throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
-        }
-      } else {
-        throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
-      }
-
       const log = await data.post('/api/log', {
         userId,
         targetUserId,
-        targetUser: targetUser[0],
+        targetUser: targetUser,
         eventId: body.eventId,
         date,
         type,
