@@ -2,6 +2,7 @@ const assert = require('assert');
 const app = require('../../src/app');
 const chai = require('chai');
 const _ = require('lodash');
+const nock = require('nock');
 
 const should = chai.should();
 
@@ -22,7 +23,8 @@ describe('\'reservation\' service', () => {
     chai.request(app)
       .post('/api/reservation')
       .set('Accept', 'application/json')
-      .set('Authorization', 'Bearer '.concat(user))
+      .set('Authorization', 'Bearer jwt')
+      .set('newshub-user-id', 1)
       .send({
         devices: [{
           id: device.id,
@@ -35,30 +37,7 @@ describe('\'reservation\' service', () => {
       })
       .end((err, res) => {
         res.should.have.status(201);
-        done();
-      });
-  });
 
-  it('should allow user to create a reservation with special requests', async (done) => {
-    const device = await app.get('sequelize').models.device.findOne();
-
-    chai.request(app)
-      .post('/api/reservation')
-      .set('Accept', 'application/json')
-      .set('Authorization', 'Bearer '.concat(user))
-      .send({
-        devices: [{
-          id: device.id,
-          availableQuantity: 1,
-          reservedQuantity: 1
-        }],
-        startDate: '2017-02-01T01:00',
-        endDate: '2017-03-01T13:00',
-        purpose: 'News',
-        specialRequests: 'Need special level of access to approve this'
-      })
-      .end((err, res) => {
-        res.should.have.status(201);
         done();
       });
   });
@@ -69,6 +48,10 @@ describe('\'reservation\' service', () => {
         notes: 'VIDEO_SHOOT',
       },
     });
+
+    // setup mock/stub to pass authorization for approval
+    // knowing that the user should be authorized
+    // this should pass
 
     chai.request(app)
       .patch(`/api/reservation/${reservation.id}`)
