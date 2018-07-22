@@ -13,6 +13,7 @@ services:
     - reservations
     - events
     - authentication
+    - files
     - redis
 
   authentication:
@@ -39,5 +40,14 @@ services:
     - NODE_ENV=production
     restart: always
     env_file: reservations.env
+    links:
+    - redis
+
+  files:
+    image: bharatari/newshub_files
+    environment:
+    - NODE_ENV=production
+    restart: always
+    env_file: files.env
     links:
     - redis

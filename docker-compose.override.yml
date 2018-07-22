@@ -7,6 +7,7 @@ services:
     - reservations
     - events
     - authentication
+    - files
     - redis
 
   authentication:
@@ -26,6 +27,13 @@ services:
   reservations:
     build: ../Services/newshub-reservations/
     env_file: ../Services/newshub-reservations/.env
+    links:
+    - postgres
+    - redis
+
+  files:
+    build: ../Services/newshub-files/
+    env_file: ../Services/newshub-files/.env
     links:
     - postgres
     - redis

@@ -31,6 +31,13 @@ module.exports = {
         '/api/reservation',
       ],
     },
+    { 
+      hostname: 'http://files:8080',
+      name: 'newshub-files',
+      endpoints: [
+        '/api/file',
+      ],
+    },
   ],
   findService(url) {
     const endpoint = this.getEndpoint(url);

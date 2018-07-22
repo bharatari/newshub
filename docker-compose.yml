@@ -23,6 +23,12 @@ services:
     - "8083:8080"
     environment:
     - PORT=8080
+  
+  files:
+    ports:
+    - "8084:8080"
+    environment:
+    - PORT=8080
 
   redis:
     image: redis
