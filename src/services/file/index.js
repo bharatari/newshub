@@ -17,12 +17,11 @@ const upload = multer({
     bucket: process.env.SPACE_NAME,
     acl: 'public-read',
     key(request, file, cb) {
-      console.log(request);
-      cb(null, `/images/${Date.now().toString()}-${file.originalname}`);
+      cb(null, `images/${Date.now().toString()}-${file.originalname}`);
     },
   }),
-  fileFilter (req, file, cb) {
-    if (utils.supportedFileTypes.includes(fileType(file).ext)) {
+  fileFilter(req, file, cb) {
+    if (utils.isValidFile(file.originalname)) {
       cb(null, true);
     } else {
       cb(new Error('Unsupported file type'));
@@ -31,9 +30,9 @@ const upload = multer({
 });
 
 module.exports = (router) => {
-  router.post('/api/file', upload.any(), async (ctx, next) => {
+  router.post('/api/file', upload.array('file', 6), async (ctx, next) => {
     try {
-      data.respond(ctx, response, next);
+      data.respond(ctx, 'Uploaded files successfully', next);
     } catch (e) {
       data.handleError(ctx, e, next);
     }
