@@ -52,8 +52,8 @@ module.exports = function (app) {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-    imageId: {
-      type: Sequelize.INTEGER,
+    image: {
+      type: Sequelize.TEXT,
     },
   }, {
     hooks: {
