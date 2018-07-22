@@ -22,5 +22,12 @@ module.exports = {
     const type = ext.substring(1);
 
     return this.supportedFileTypes.includes(type);
+  },
+  processResponse(files) {
+    for (let i = 0; i < files.length; i++) {
+      files[i].url = `${files[i].location}`;
+    }
+
+    return files;
   }
 };

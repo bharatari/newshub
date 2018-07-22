@@ -17,7 +17,10 @@ const upload = multer({
     bucket: process.env.SPACE_NAME,
     acl: 'public-read',
     key(request, file, cb) {
-      cb(null, `images/${Date.now().toString()}-${file.originalname}`);
+      cb(null, `files/${Date.now().toString()}-${file.originalname}`);
+    },
+    metadata(req, file, cb) {
+      cb(null, { fileName: file.originalname, userId: req.headers['newshub-user-id'] });
     },
   }),
   fileFilter(req, file, cb) {
@@ -31,8 +34,15 @@ const upload = multer({
 
 module.exports = (router) => {
   router.post('/api/file', upload.array('file', 6), async (ctx, next) => {
+    const files = ctx.req.files;
+    let response = utils.processResponse(files);
+
+    if (response.length == 1) {
+      response = files[0];
+    }
+
     try {
-      data.respond(ctx, 'Uploaded files successfully', next);
+      data.respond(ctx, response, next);
     } catch (e) {
       data.handleError(ctx, e, next);
     }
