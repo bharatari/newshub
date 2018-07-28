@@ -21,7 +21,7 @@ module.exports = {
     const ext = path.extname(fileName);
     const type = ext.substring(1);
 
-    return this.supportedFileTypes.includes(type);
+    return this.supportedFileTypes.includes(type.toLowerCase());
   },
   processResponse(files) {
     for (let i = 0; i < files.length; i++) {
