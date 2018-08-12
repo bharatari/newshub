@@ -1,0 +1,43 @@
+{
+  "name": "newshub-files",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "set NODE_ENV=test&& npm run mocha && npm run istanbul",
+    "lint": "eslint src test",
+    "lint:fix": "eslint src test --fix",
+    "mocha": "mocha --require test/bootstrap.test.js test/ --recursive",
+    "istanbul": "istanbul cover node_modules/mocha/bin/_mocha --require test/bootstrap.test.js -- test/ --recursive && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "author": "Bharat Arimilli",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.279.1",
+    "dotenv": "^4.0.0",
+    "file-type": "^8.1.0",
+    "kcors": "^2.2.1",
+    "koa": "^2.3.0",
+    "koa-body": "^2.3.0",
+    "koa-json-error": "^3.1.2",
+    "koa-jwt": "^3.2.2",
+    "koa-multer": "^1.0.2",
+    "koa-router": "^7.2.1",
+    "lodash": "^4.17.4",
+    "multer": "^1.3.1",
+    "multer-s3": "^2.7.0",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chai-http": "^3.0.0",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.8.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^4.0.1",
+    "request": "^2.83.0"
+  }
+}
