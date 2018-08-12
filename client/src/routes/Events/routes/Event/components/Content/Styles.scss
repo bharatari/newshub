@@ -1,0 +1,98 @@
+.header {
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(163, 163, 163, 1);
+}
+
+.contentContainer {
+  padding: 20px;
+}
+
+.content {
+  font-family: 'Open Sans';
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: -10px;
+  color: rgba(99, 99, 99, 1);
+}
+
+.dateHeader {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 32px;
+  letter-spacing: -1px;
+  display: inline-block;
+}
+
+.timeHeader {
+  font-family: 'Open Sans';
+  font-weight: 400;
+  font-size: 18px;
+  display: inline;
+}
+
+.subheader {
+  display: block;
+  margin-top: -10px;
+  margin-bottom: 40px;
+}
+
+.userHeader {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 18px;
+  display: inline;
+}
+
+.statusText {
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  padding: 8px 12px;
+  width: auto;
+  display: inline-block;
+  float: right;
+  margin-top: -100px;
+}
+
+.activityHeader {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  text-transform: uppercase;
+  color: gray;
+  font-size: 14px;
+}
+
+.activityBox {
+
+}
+
+.activityBox ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.activityBox ul li:first-child {
+  border-top: none;
+}
+
+.activityBox ul li {
+  padding: 20px;
+  font-family: 'Open Sans';
+  color: gray;
+  border-top: 1px solid lightgrey;
+  background-color: whitesmoke;
+}
+
+.actionsBox {
+  margin-bottom: 20px;
+}
+
+.delete {
+  margin-bottom: 20px;
+}

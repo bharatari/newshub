@@ -1,0 +1,132 @@
+.infoHeader {
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgb(202, 202, 202);
+  margin-bottom: 10px;
+  margin-top: 15px;
+  letter-spacing: 2px;
+}
+
+.infoContent {
+  font-family: 'Open Sans';
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(99, 99, 99, 1);
+  display: inline;
+}
+
+.infoBox {
+  box-shadow: 0px 0px 40px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+.boldHeader {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: gray;
+  font-size: 14px;
+}
+
+.dangerZone {
+  margin-top: 20px;
+}
+
+.contentContainer {
+  padding: 20px;
+}
+
+.header {
+  font-family: 'Open Sans';
+  font-weight: 700;
+  font-size: 42px;
+  letter-spacing: -1px;
+  display: inline-block;
+}
+
+.subheader {
+  display: block;
+  margin-top: -10px;
+  margin-bottom: 40px;
+}
+
+.userHeader {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 18px;
+  display: inline;
+  color: rgb(77, 77, 77);
+}
+
+.notes {
+  font-family: 'Open Sans';
+  font-weight: 500;
+  font-size: 20px;
+  color: rgba(99, 99, 99, 1);
+  margin-top: -15px;
+  margin-bottom: 50px;
+}
+
+.createdBy {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 18px;
+  display: inline;
+  color: rgb(211, 211, 211);
+}
+
+.statusText {
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  padding: 8px 12px;
+  width: auto;
+  display: inline-block;
+  float: right;
+  margin-top: -100px;
+  box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.12);
+}
+
+.activityBox {
+
+}
+
+.activityBox ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.activityBox ul li:first-child {
+  border-top: none;
+}
+
+.activityBox ul li {
+  padding: 20px;
+  font-family: 'Open Sans';
+  color: gray;
+  border-top: 1px solid lightgrey;
+  background-color: whitesmoke;
+}
+
+.icon {
+  font-size: 20px;
+  padding-right: 10px;
+  display: inline;
+}
+
+.startTimeIcon {
+  color: rgb(45, 96, 163);
+}
+
+.notesIcon {
+  color: rgb(148, 204, 96);
+}

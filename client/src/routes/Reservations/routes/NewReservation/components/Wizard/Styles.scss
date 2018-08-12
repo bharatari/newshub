@@ -1,0 +1,78 @@
+.reservationDevice {
+  margin-bottom: 25px;
+}
+
+.reservationDeviceContainer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.reservationDeviceLabel {
+  font-family: 'Open Sans';
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.reservationDeviceQuantity {
+  font-family: 'Open Sans';
+  font-size: 16px;
+  font-weight: 700;
+  margin-right: -2px;
+  margin-left: -5px;
+  padding: 4px 15px 8px;
+}
+
+.errorText {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  color: red;
+  margin-top: 5px;
+  display: block;
+}
+
+.groupHeader {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 20px !important;
+}
+
+.font {
+  font-family: 'Open Sans' !important;
+}
+
+.barcodeField {
+  font-family: 'Open Sans' !important;
+}
+
+.barcodeContainer {
+  padding-bottom: 15px;
+}
+
+.tabsContainer {
+  margin-top: 10px;
+}
+
+.emptyMessage {
+  font-family: 'Open Sans';
+  color: gray;
+  font-weight: 400;
+  margin-top: 20px;
+}
+
+.cardDisabled {
+  opacity: 0.5;
+}
+
+.specialApproval {
+  font-weight: 600;
+  color: #ff7a7a;
+}
+
+.specialApprovalMessage {
+  margin-top: 10px !important;
+}
+
+.delete {
+  float: right;
+}

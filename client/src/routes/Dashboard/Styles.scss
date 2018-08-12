@@ -1,0 +1,105 @@
+.header {
+  padding-bottom: 20px;
+  color: #626262;
+  font-family: 'Open Sans';
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-top: -30px;
+  margin-bottom: 0px !important;
+  font-size: 14px;
+}
+
+.empty {
+  font-family: 'Open Sans';
+  font-size: 26px;
+  color: gray;
+}
+
+.time {
+  font-family: 'Open Sans';
+  font-size: 32px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #f55753;
+}
+
+.day {
+  font-family: 'Open Sans';
+  font-size: 32px;
+  font-weight: 300;
+  color: #2185d0;
+  margin-top: -2px !important;
+}
+
+.date {
+  font-family: 'Open Sans';
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #626262;
+  margin-top: -30px;
+  margin-bottom: 6px !important;
+}
+
+.statText {
+  color: white;
+  font-family: 'Open Sans';
+  font-weight: 300;
+  margin-top: 0px !important;
+  margin-bottom: 10px;
+  display: block;
+  font-size: 38px;
+}
+
+.statLabel {
+  color: white;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 14px;
+  display: inherit;
+}
+
+.greeting {
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-size: 34px;
+  color: white;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.name {
+  font-family: 'Open Sans';
+  font-weight: 400;
+  font-size: 34px;
+  color: white;
+}
+
+.mini {
+  color: #626262;
+  font-family: 'Open Sans';
+  text-transform: uppercase;
+  font-size: 12px;
+  text-align: center;
+  margin-top: -30px;
+  margin-bottom: 10px !important;
+}
+
+.topGreeting {
+  font-family: 'Open Sans';
+  font-size: 18px;
+  margin-top: 7px !important;
+  display: block;
+  color: #4e4e4e;
+}
+
+.topName {
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 768px) {
+  .topGreeting {
+    display: none;
+  }
+}

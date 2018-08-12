@@ -1,0 +1,22 @@
+.container {
+  display: inline-block;
+}
+
+.notes {
+  font-family: 'Open Sans';
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(99, 99, 99, 1);
+  width: auto;
+  display: inline-block;
+}
+
+.notesHover {
+  transition: all 0.25s ease-in-out;
+}
+
+.notesHover:hover {
+  border: 1px solid rgb(202, 202, 202);
+  border-radius: 5px;
+  padding: 5px 10px;
+}

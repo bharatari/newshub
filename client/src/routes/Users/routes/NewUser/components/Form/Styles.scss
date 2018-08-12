@@ -1,0 +1,35 @@
+.header {
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: gray;
+}
+
+.bigHeader {
+  font-family: 'Open Sans';
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 5px !important;
+}
+
+.content {
+  font-family: 'Open Sans';
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: -10px;
+}
+
+.font {
+  font-family: 'Open Sans';
+  font-size: 18px !important;
+  font-weight: 400;
+}
+
+.errorText {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  color: red;
+  margin-top: 5px;
+  display: block;
+}

@@ -1,0 +1,82 @@
+.contentContainer {
+  padding: 20px;
+  background-color: black;
+  margin-bottom: 60px;
+  transition: all 0.3s ease-in-out;
+  max-height: 1000px;
+  opacity: 1;
+}
+
+.contentContainer.displayUserDetails {
+  max-height: 1100px;
+}
+
+.scannerContainer {
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.scannerContainer.displayUserDetails {
+  opacity: 0;
+  height: 0px;
+}
+
+.barcodeIcon {
+  color: white;
+  font-size: 120px;
+  text-align: center;
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.loader {
+  margin-bottom: 20px !important;
+  margin-top: 40px !important;
+}
+
+.barcodeInput {
+  margin-left: auto;
+  font-family: 'Open Sans' !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px;
+  text-align: center !important;
+  color: gray !important;
+  height: 50px;
+}
+
+.inputContainer {
+  margin-top: 20px;
+}
+
+.userDetailsContainer {
+  margin-top: 20px;
+  opacity: 0;
+  height: 0px;
+  transition: all 0.3s ease-in-out;
+}
+
+.userDetailsContainer.displayUserDetails {
+  opacity: 1;
+  height: auto;
+}
+
+.userName {
+  font-family: 'Open Sans';
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.checkIcon {
+  color: white;
+  font-size: 120px;
+  text-align: center;
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}

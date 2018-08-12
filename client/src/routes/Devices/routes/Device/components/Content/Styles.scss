@@ -1,0 +1,195 @@
+.button {
+  margin-bottom: 20px !important;
+}
+
+.imageBox {
+  width: 250px;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 10px;
+  float: left;
+  box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.53);
+}
+
+.mainRow {
+  background-color: rgb(230, 230, 230);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  padding: 30px;
+  height: 175px !important;
+  margin-bottom: 120px !important;
+}
+
+.header {
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: gray;
+}
+
+.bigHeader {
+  font-family: 'Open Sans';
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 0px !important;
+}
+
+.content {
+  font-family: 'Open Sans';
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: -10px;
+}
+
+.font {
+  font-family: 'Open Sans';
+  font-size: 18px !important;
+  font-weight: 400;
+}
+
+.errorText {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  color: red;
+  margin-top: 5px;
+  display: block;
+}
+
+.mainColumn {
+  display: inline-block;
+}
+
+.mainDetails {
+  padding-left: 30px;
+  display: inline-block;
+}
+
+.deviceLabel {
+  font-family: 'Open Sans';
+  font-weight: 700;
+  font-size: 42px;
+  letter-spacing: -1px;
+  margin-top: 20px !important;
+  color: #3E3E3E;
+}
+
+.deviceName {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 18px;
+  color: #4d4d4d;
+  margin-top: -15px;
+  text-transform: uppercase;
+  
+}
+
+.description {
+  font-family: 'Open Sans';
+  font-weight: 500;
+  font-size: 22px;
+  color: rgba(99, 99, 99, 1);
+}
+
+.descriptionRow {
+  margin-bottom: 30px;
+}
+
+.category {
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  padding: 8px 12px;
+  width: auto;
+  display: inline-block;
+  box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.12);
+  background-color: rgb(45, 96, 163);
+}
+
+.infoBox {
+  box-shadow: 0px 0px 40px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+.padding {
+  padding: 30px;
+}
+
+.infoHeader {
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgb(202, 202, 202);
+  margin-bottom: 10px;
+  margin-top: 15px;
+  letter-spacing: 2px;
+}
+
+.icon {
+  display: inline;
+  font-size: 24px;
+  padding-right: 10px;
+}
+
+.quantity {
+  display: inline;
+  font-family: 'Open Sans';
+  font-size: 20px;
+}
+
+.barcode {
+  display: inline;
+  font-family: 'Open Sans';
+  font-size: 20px;
+}
+
+.disabled {
+  display: inline;
+  font-family: 'Open Sans';
+  font-size: 20px;
+}
+
+.activityHeader {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: gray;
+  font-size: 14px;
+}
+
+.activityRow {
+  margin-top: 60px !important;
+}
+
+.activityBox ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.activityBox ul li:first-child {
+  border-top: none;
+}
+
+.activityBox ul li {
+  padding: 20px;
+  font-family: 'Open Sans';
+  color: gray;
+  border-top: 1px solid lightgrey;
+  background-color: whitesmoke;
+}
+
+@media (max-width: 990px) {
+  .imageBox {
+    width: 150px;
+    height: 150px;
+  }
+}

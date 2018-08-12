@@ -1,0 +1,285 @@
+:global {
+  @import 'base';
+  @import '~normalize.css/normalize';
+  @import '~react-big-calendar/lib/css/react-big-calendar';
+  @import '~react-select/dist/react-select';
+
+  // Some best-practice CSS that's useful for most apps
+  // Just remove them if they're not what you want
+  html {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  /**
+   *
+   * @section - 1. Structure
+   *
+   */
+
+  body {
+    background-color: whitesmoke !important;
+  }
+
+  .page-enter {
+    opacity: 0.01;
+  }
+
+  .page-enter-active {
+    opacity: 1;
+    -webkit-transition: opacity 0.5s ease-in;
+    -moz-transition: opacity 0.5s ease-in;
+    -ms-transition: opacity 0.5s ease-in;
+    -o-transition: opacity 0.5s ease-in;
+    transition: opacity 0.5s ease-in, transform 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  }
+
+  .page-leave {
+    opacity: 1;
+  }
+
+  .page-leave-active {
+    opacity: 0.01;
+    -webkit-transition: opacity 0.5s ease-out;
+    -moz-transition: opacity 0.5s ease-out;
+    -ms-transition: opacity 0.5s ease-out;
+    -o-transition: opacity 0.5s ease-out;
+    transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045);
+  }
+
+  .mobile-only {
+    display: none !important;
+  }
+
+  /**
+   *
+   * @section - 2. Utilities
+   *
+   */
+
+  /**
+   *
+   * @section - 3. Notifications
+   *
+   */
+
+  .notification-enter {
+    opacity: 0.01;
+    transform: scale(0.50);
+  }
+
+  .notification-enter-active {
+    opacity: 1 !important;
+    transform: scale(1.00) !important;
+    -webkit-transition: opacity 0.5s ease-in, transform 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    -moz-transition: opacity 0.5s ease-in, transform 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    -ms-transition: opacity 0.5s ease-in, transform 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    -o-transition: opacity 0.5s ease-in, transform 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    transition: opacity 0.5s ease-in, transform 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) !important;
+  }
+
+  .notification-exit {
+    opacity: 1;
+    transform: scale(1.00);
+  }
+
+  .notification-exit-active {
+    opacity: 0.01 !important;
+    transform: scale(0.50) !important;
+    -webkit-transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045);
+    -moz-transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045);
+    -ms-transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045);
+    -o-transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045);
+    transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045) !important;
+  }
+
+
+  /**
+   *
+   * @section - 4. Controls
+   *
+   */
+
+  .ant-btn {
+    font-family: 'Open Sans' !important;
+  }
+
+  .ant-btn-background-ghost {
+
+  }
+
+  .button-light {
+    font-family: 'Open Sans' !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    padding: 13px 22px !important;
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.33) !important;
+    transition: box-shadow 1.0s ease-out;
+  }
+
+  .button-light:hover {
+    box-shadow: 0px 7px 20px 0px rgba(0, 0, 0, 0.33) !important;
+  }
+
+  .table-enter {
+    opacity: 0.01;
+    transform: scale(0.95);
+  }
+
+  .table-enter-active {
+    opacity: 1;
+    transform: scale(1.00);
+    -webkit-transition: opacity 0.5s ease-in;
+    -moz-transition: opacity 0.5s ease-in;
+    -ms-transition: opacity 0.5s ease-in;
+    -o-transition: opacity 0.5s ease-in;
+    transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+  }
+
+  .table-leave {
+    opacity: 1;
+    transform: scale(1.00);
+  }
+
+  .table-leave-active {
+    opacity: 0.01;
+    transform: scale(0.95);
+    -webkit-transition: opacity 0.5s ease-out;
+    -moz-transition: opacity 0.5s ease-out;
+    -ms-transition: opacity 0.5s ease-out;
+    -o-transition: opacity 0.5s ease-out;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  /**
+   *
+   * @section - 5. Components
+   *
+   */
+
+  .device-group-enter {
+    opacity: 0.01;
+  }
+
+  .device-group-enter-active {
+    opacity: 1;
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in !important;
+  }
+
+  .device-group-leave {
+    opacity: 1;
+  }
+
+  .device-group-leave-active {
+    opacity: 0.01;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out !important;
+  }
+
+  .reservation-device-enter {
+    opacity: 0.01;
+    transform: scale(0.50);
+    height: 0;
+    margin-bottom: 0;
+  }
+
+  .reservation-device-enter-active {
+    opacity: 1;
+    transform: scale(1.00);
+    height: 100px;
+    margin-bottom: 25px;
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in, transform 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.075);
+  }
+
+  .reservation-device-leave {
+    opacity: 1;
+    height: 100px;
+    margin-bottom: 25px;
+    transform: scale(1.00);
+  }
+
+  .reservation-device-leave-active {
+    opacity: 0.01;
+    transform: scale(0.50);
+    height: 0;
+    margin-bottom: 0;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out, transform 0.5s cubic-bezier(0.600, -0.080, 0.735, 0.045);
+  }
+
+  .newshub-sidebar.active {
+    left: 0px;
+  }
+
+  .newshub-sidebar .item {
+    border-radius: 0px !important;
+    font-weight: 600;
+    margin-bottom: 0px;
+  }
+
+  /**
+   *
+   * @section - 6. Animations
+   *
+   */
+
+  /**
+   *
+   * @section - 7. Media Queries
+   *
+   */
+
+  @media only screen and (max-width: 1530px) {
+
+  }
+
+  @media only screen and (max-width: 991px) {
+    
+  }
+
+  @media only screen and (max-width: 768px) {
+    .desktop-only {
+      display: none;
+    }
+
+    .mobile-only {
+      display: block !important;
+    }
+  }
+}
+
+/**
+ *
+ * @section - 8. Icons
+ *
+ */
+

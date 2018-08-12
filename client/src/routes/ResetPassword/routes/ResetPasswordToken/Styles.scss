@@ -1,0 +1,35 @@
+.main {
+  padding-bottom: 50px !important;
+  padding-top: 50px !important;
+  background-color: white;
+  box-shadow: 0px 0px 20px 0px rgba(50, 50, 50, 0.75);
+  position: relative;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+
+.header {
+  color: #4C4C4C;
+  font-family: 'Open Sans' !important;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-family: 'Open Sans';
+  color: #B1B1B1;
+  margin-bottom: 20px;
+}
+
+.background {
+  background-repeat: none;
+  background-position: center;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 0;
+  padding-top: 30vh;
+}
