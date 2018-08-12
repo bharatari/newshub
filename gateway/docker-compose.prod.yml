@@ -1,4 +1,4 @@
-version: '3'
+version: '3.2'
 services:
   gateway:
     image: bharatari/newshub_gateway
@@ -49,5 +49,14 @@ services:
     - NODE_ENV=production
     restart: always
     env_file: files.env
+    links:
+    - redis
+    
+  room_reservations:
+    image: bharatari/newshub_room_reservations
+    environment:
+    - NODE_ENV=production
+    restart: always
+    env_file: room_reservations.env
     links:
     - redis

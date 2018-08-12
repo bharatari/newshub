@@ -1,4 +1,4 @@
-version: '3'
+version: '3.2'
 services:
   gateway:
     ports:
@@ -8,25 +8,31 @@ services:
 
   authentication:
     ports:
-    - "8081:8080"
+    - "8080"
     environment:
     - PORT=8080
 
   events:
     ports:
-    - "8082:8080"
+    - "8080"
     environment:
     - PORT=8080
 
   reservations:
     ports:
-    - "8083:8080"
+    - "8080"
     environment:
     - PORT=8080
   
   files:
     ports:
-    - "8084:8080"
+    - "8080"
+    environment:
+    - PORT=8080
+
+  room_reservations:
+    ports:
+    - "8080"
     environment:
     - PORT=8080
 
