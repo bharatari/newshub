@@ -11,29 +11,29 @@ services:
     - redis
 
   authentication:
-    build: ../Services/newshub-authentication/
-    env_file: ../Services/newshub-authentication/.env
+    build: ../services/authentication/
+    env_file: ../services/authentication/.env
     links:
     - postgres
     - redis
 
   events:
-    build: ../Services/newshub-events/
-    env_file: ../Services/newshub-events/.env
+    build: ../services/events/
+    env_file: ../services/events/.env
     links:
     - postgres
     - redis
 
   reservations:
-    build: ../Services/newshub-reservations/
-    env_file: ../Services/newshub-reservations/.env
+    build: ../services/reservations/
+    env_file: ../services/reservations/.env
     links:
     - postgres
     - redis
 
   files:
-    build: ../Services/newshub-files/
-    env_file: ../Services/newshub-files/.env
+    build: ../services/files/
+    env_file: ../services/files/.env
     links:
     - postgres
     - redis
