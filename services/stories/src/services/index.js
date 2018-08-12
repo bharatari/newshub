@@ -1,0 +1,24 @@
+const story = require('./story/story.service.js');
+const cycle = require('./cycle/cycle.service.js');
+const assignment = require('./assignment/assignment.service.js');
+const section = require('./section/section.service.js');
+const comment = require('./comment/comment.service.js');
+const draft = require('./draft/draft.service.js');
+const file = require('./file/file.service.js');
+const tag = require('./tag/tag.service.js');
+const status = require('./status/status.service.js');
+const storyGroup = require('./story-group/story-group.service.js');
+const action = require('./action/action.service.js');
+module.exports = function (app) {
+  app.configure(story);
+  app.configure(cycle);
+  app.configure(assignment);
+  app.configure(section);
+  app.configure(comment);
+  app.configure(draft);
+  app.configure(file);
+  app.configure(tag);
+  app.configure(status);
+  app.configure(storyGroup);
+  app.configure(action);
+};
