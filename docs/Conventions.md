@@ -25,3 +25,7 @@ Within permission strings, models are camelCased while the rest of the permissio
 All services should have a manifest file in the project's native file format within the root source code directory. In Node.js projects, the root source code directory is generally `src` and therefore Node.js NewsHub services have their manifest files at `/src/manifest.js`.
 
 The manifest file defines the service's capabilities, associated roles and associated services and models.
+
+## Docker Images
+
+In the context of docker services and images, names are snake_case to follow Docker's naming convention.
