@@ -3,6 +3,7 @@ const data = require('../../../utils/data');
 
 module.exports = function (options) {
   return async function (hook) {
+    // STORE THIS CALL
     const users = await data.getDeviceManagers(hook.params.authorization);
 
     try {

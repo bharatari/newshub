@@ -12,9 +12,11 @@ module.exports = function (options) {
         id: hook.id,
       },
     }).then(async (reservation) => {
+      // STORE THIS CALL
       const canDelete = await access.can(hook.params.authorization, 'reservation', 'delete', null, hook.id);
 
       if (canDelete) {
+        // STORE THIS CALL
         const users = await data.getDeviceManagers(hook.params.authorization);
 
         try {

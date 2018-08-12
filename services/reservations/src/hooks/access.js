@@ -10,9 +10,11 @@ module.exports = function (options) {
       const authorization = hook.params.headers['authorization'];
       const userId = hook.params.headers['newshub-user-id'];
 
+      // STORE THIS CALl
       hook.params.user = await data.getUser(authorization, userId);
       hook.params.authorization = authorization;
   
+      // STORE THIS CALL
       const can = await access.can(hook.params.authorization, options.service, hook.method);
       
       if (can) {

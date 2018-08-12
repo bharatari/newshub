@@ -45,6 +45,7 @@
     "pg": "^7.4.0",
     "request-promise-native": "^1.0.5",
     "sequelize": "^4.26.0",
+    "sequelize-cli": "^4.0.0",
     "serve-favicon": "^2.4.5",
     "winston": "^2.4.0"
   },
@@ -56,8 +57,11 @@
     "eslint": "^4.12.1",
     "istanbul": "^0.4.5",
     "mocha": "^4.0.1",
+    "nock": "^9.1.6",
+    "proxyquire": "^1.8.0",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
-    "sequelize-fixtures": "^0.7.0"
+    "sequelize-fixtures": "^0.7.0",
+    "sinon": "^4.1.6"
   }
 }
