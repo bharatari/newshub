@@ -2,21 +2,16 @@
 
 An API gateway for NewsHub.
 
-# Components
+## Running
 
-## Services
+1. Clone the `newshub` repository: `git clone https://github.com/bharatari/newshub.git`
+2. Add `.env` files for each service with the parameters specified in the `.env.sample` file
+2. `cd newshub/gateway`
+3. `docker-compose up --build`
+4. The Docker services will build and the services will be started
+5. The services will be available through (and should only be accessed through) the API gateway at `http://localhost:8080`
 
-* [newshub-client](https://github.com/bharatari/newshub-client): NewsHub's client built on React and Redux
-* [newshub-client-server](https://github.com/bharatari/newshub-client-server): NewsHub's client server built on Koa
-* [newshub-authentication](https://github.com/bharatari/newshub-authentication)
-* [newshub-gateway](https://github.com/bharatari/newshub-gateway): API gateway
-* [newshub-events](https://github.com/bharatari/newshub-events): Events functionality
-
-## Functions
-
-* newshub-email: Email functionality
-
-# Deployment Guide
+## Deployment
 
 1. Copy `docker-compose.yml` and `docker-compose.prod.yml` files to remote server
 2. Copy `.env` files for each service to remote server
@@ -29,7 +24,7 @@ An API gateway for NewsHub.
 
 If you omit the tag/version when pushing the images, they will automatically be tagged as `latest`. The `docker-compose.prod.yml` included in this repository by default pulls from the `latest` tag because image versions are initially omitted. Once in a production environment, you should be sure to push images with versions and then reference these specific versions in the `docker-compose.prod.yml` file. Explicitly stating versions is the only way to know exactly what you are deploying each time you run docker-compose. Using versioning also allows you to quickly rollback to a previous version of an image in the case of any significant problems. For these reasons, it is highly recommended not to continue using the `latest` tag in production.
 
-# Common Commands
+## Common Commands
 
      docker-compose build
      docker-compose up --build
@@ -44,4 +39,4 @@ If you omit the tag/version when pushing the images, they will automatically be 
 
 ## License
 
-Copyright (c) 2017 Bharat Arimilli
+Copyright (c) 2018 Bharat Arimilli
