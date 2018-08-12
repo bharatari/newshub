@@ -35,14 +35,13 @@ module.exports = function (app) {
       type: Sequelize.TEXT,
       defaultValue: null,
     },
-    buildingId: {
-
-    },
     managerId: {
-
+      type: Sequelize.INTEGER,
+      allowNull: false,
     },
     organizationId: {
-
+      type: Sequelize.INTEGER,
+      allowNull: false,
     },
   }, {
     hooks: {
@@ -52,9 +51,8 @@ module.exports = function (app) {
     }
   });
 
-  room.associate = function (models) { // eslint-disable-line no-unused-vars
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+  room.associate = function (models) {
+    room.belongsTo(models.building);
   };
 
   return room;

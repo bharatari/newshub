@@ -15,7 +15,8 @@ module.exports = function (app) {
       allowNull: false,
     },
     organizationId: {
-      
+      type: Sequelize.INTEGER,
+      allowNull: false,
     }
   }, {
     hooks: {

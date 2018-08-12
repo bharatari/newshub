@@ -2,7 +2,7 @@
 
 const email = require('../../../utils/email');
 const access = require('../../../utils/access');
-const utils = require('../utils');
+const utils = require('../reservation.utils');
 
 module.exports = function (options) {
   return async function (hook) {

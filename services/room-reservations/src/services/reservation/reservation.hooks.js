@@ -1,21 +1,22 @@
-
 const addToOrganization = require('../../hooks/addToOrganization');
 const protectOrganization = require('../../hooks/protectOrganization');
 const restrictChangeOrganization = require('../../hooks/restrictChangeOrganization');
 const includeUser = require('../../hooks/includeUser');
+const access = require('../../hooks/access');
 const hooks = require('feathers-hooks-common');
-const populate = require('./populate');
-const process = require('./process');
-const filter = require('./filter');
-const status = require('./status');
-const email = require('./email');
-const validate = require('./validate');
-const remove = require('./remove');
-const restrict = require('./restrict');
-const count = require('./count');
-const approve = require('./approve');
-const available = require('./available');
-const manager = require('./manager');
+const preventIncludeUpdates = require('./hooks/preventIncludeUpdates');
+const populate = require('./hooks/populate');
+const process = require('./hooks/process');
+const filter = require('./hooks/filter');
+const status = require('./hooks/status');
+const email = require('./hooks/email');
+const validate = require('./hooks/validate');
+const remove = require('./hooks/remove');
+const restrict = require('./hooks/restrict');
+const count = require('./hooks/count');
+const approve = require('./hooks/approve');
+const available = require('./hooks/available');
+const manager = require('./hooks/manager');
 
 module.exports = {
   before: {

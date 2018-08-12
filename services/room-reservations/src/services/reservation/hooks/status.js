@@ -4,7 +4,7 @@ const errors = require('@feathersjs/errors');
 const email = require('../../../utils/email');
 const _ = require('lodash');
 const access = require('../../../utils/access');
-const utils = require('../utils');
+const utils = require('../reservation.utils');
 
 module.exports = function (options) {
   return function (hook) {

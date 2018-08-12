@@ -2,7 +2,6 @@ const request = require('request-promise-native');
 const querystring = require('querystring');
 const errors = require('@feathersjs/errors');
 const access = require('../utils/access');
-const data = require('../utils/data');
 
 module.exports = function (options) {
   return async function (hook) {
@@ -11,7 +10,7 @@ module.exports = function (options) {
       const userId = hook.params.headers['newshub-user-id'];
 
       // STORE THIS CALl
-      hook.params.user = await data.getUser(authorization, userId);
+      //hook.params.user = await data.getUser(authorization, userId);
       hook.params.authorization = authorization;
   
       // STORE THIS CALL

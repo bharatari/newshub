@@ -1,4 +1,6 @@
 {
   "host": "newshub-room-reservations-app.feathersjs.com",
-  "port": "PORT"
+  "port": "PORT",
+  "postgres": "DATABASE_URL",
+  "DATABASE_SSL": "DATABASE_SSL"
 }

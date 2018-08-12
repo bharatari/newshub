@@ -1,6 +1,6 @@
 'use strict';
 
-const utils = require('../utils');
+const utils = require('../reservation.utils');
 const _ = require('lodash');
 const query = require('../../../utils/query');
 

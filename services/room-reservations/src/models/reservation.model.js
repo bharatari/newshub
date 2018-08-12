@@ -41,10 +41,12 @@ module.exports = function (app) {
       defaultValue: false,
     },
     userId: {
-
+      type: Sequelize.INTEGER,
+      allowNull: false,
     },
     organizationId: {
-
+      type: Sequelize.INTEGER,
+      allowNull: false,
     }
   }, {
     hooks: {
