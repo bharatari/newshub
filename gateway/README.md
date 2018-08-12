@@ -6,10 +6,17 @@ An API gateway for NewsHub.
 
 1. Clone the `newshub` repository: `git clone https://github.com/bharatari/newshub.git`
 2. Add `.env` files for each service with the parameters specified in the `.env.sample` file
-2. `cd newshub/gateway`
-3. `docker-compose up --build`
-4. The Docker services will build and the services will be started
-5. The services will be available through (and should only be accessed through) the API gateway at `http://localhost:8080`
+3. `cd newshub/gateway`
+4. `docker-compose up --build`
+5. The Docker services will build and the services will be started
+6. The services will be available through (and should only be accessed through) the API gateway at `http://localhost:8080`
+7. This will also spin up our front-end on `http://localhost:3030`
+    * However, the front-end spun up with Docker will **not** hot reload any code changes
+    * If you are actively developing the front-end (and therefore need code changes to be reloaded without rebuilding the Docker image), run the front-end directly in a separate command prompt with:
+      * `cd newshub/client`
+      * `npm install`
+      * `npm start`
+      * The front-end will run on `http://localhost:3000` and code changes will be hot reloaded as expected
 
 ## Deployment
 
