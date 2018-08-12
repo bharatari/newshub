@@ -1,0 +1,67 @@
+{
+  "name": "newshub-reservations",
+  "description": "",
+  "version": "0.0.0",
+  "homepage": "",
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "Bharat Arimilli",
+    "email": "bbarimilli@outlook.com"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/"
+  },
+  "engines": {
+    "node": "^8.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "scripts": {
+    "test": "npm run eslint && npm run mocha",
+    "eslint": "eslint src/. test/. --config .eslintrc.json",
+    "start": "node src/",
+    "mocha": "mocha test/ --recursive --exit"
+  },
+  "dependencies": {
+    "@feathersjs/configuration": "^1.0.1",
+    "@feathersjs/errors": "^3.2.0",
+    "@feathersjs/express": "^1.1.2",
+    "@feathersjs/feathers": "^3.0.1",
+    "@feathersjs/socketio": "^3.0.1",
+    "async": "^2.6.0",
+    "azure-storage": "^2.7.0",
+    "compression": "^1.7.1",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "feathers-hooks-common": "^3.10.0",
+    "feathers-sequelize": "^3.0.0",
+    "helmet": "^3.9.0",
+    "lodash": "^4.17.4",
+    "pg": "^7.4.0",
+    "request-promise-native": "^1.0.5",
+    "sequelize": "^4.26.0",
+    "sequelize-cli": "^4.0.0",
+    "serve-favicon": "^2.4.5",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chai-http": "^3.0.0",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.12.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^4.0.1",
+    "nock": "^9.1.6",
+    "proxyquire": "^1.8.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "sequelize-fixtures": "^0.7.0",
+    "sinon": "^4.1.6"
+  }
+}
