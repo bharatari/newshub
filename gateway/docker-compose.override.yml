@@ -1,0 +1,53 @@
+version: '3'
+services:
+  gateway:
+    build: .
+    env_file: .env
+    links:
+    - reservations
+    - events
+    - authentication
+    - files
+    - redis
+
+  authentication:
+    build: ../Services/newshub-authentication/
+    env_file: ../Services/newshub-authentication/.env
+    links:
+    - postgres
+    - redis
+
+  events:
+    build: ../Services/newshub-events/
+    env_file: ../Services/newshub-events/.env
+    links:
+    - postgres
+    - redis
+
+  reservations:
+    build: ../Services/newshub-reservations/
+    env_file: ../Services/newshub-reservations/.env
+    links:
+    - postgres
+    - redis
+
+  files:
+    build: ../Services/newshub-files/
+    env_file: ../Services/newshub-files/.env
+    links:
+    - postgres
+    - redis
+
+  postgres:
+    image: postgres
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+    - POSTGRES_DB=newshub
+    ports:
+    - "7000:5432"
+    volumes:
+    - postgres-data:/var/lib/postgresql/data
+  
+volumes:
+  postgres-data:

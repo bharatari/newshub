@@ -1,0 +1,53 @@
+version: '3'
+services:
+  gateway:
+    image: bharatari/newshub_gateway
+    environment:
+    - NODE_ENV=production
+    - PORT=80
+    restart: always
+    env_file: gateway.env
+    ports:
+    - "80:80"
+    links:
+    - reservations
+    - events
+    - authentication
+    - files
+    - redis
+
+  authentication:
+    image: bharatari/newshub_authentication
+    environment:
+    - NODE_ENV=production
+    restart: always
+    env_file: authentication.env
+    links:
+    - redis
+
+  events:
+    image: bharatari/newshub_events
+    environment:
+    - NODE_ENV=production
+    restart: always
+    env_file: events.env
+    links:
+    - redis
+
+  reservations:
+    image: bharatari/newshub_reservations
+    environment:
+    - NODE_ENV=production
+    restart: always
+    env_file: reservations.env
+    links:
+    - redis
+
+  files:
+    image: bharatari/newshub_files
+    environment:
+    - NODE_ENV=production
+    restart: always
+    env_file: files.env
+    links:
+    - redis

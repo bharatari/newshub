@@ -1,0 +1,42 @@
+version: '3'
+services:
+  gateway:
+    ports:
+    - "8080:80"
+    environment:
+    - PORT=80
+
+  authentication:
+    ports:
+    - "8081:8080"
+    environment:
+    - PORT=8080
+
+  events:
+    ports:
+    - "8082:8080"
+    environment:
+    - PORT=8080
+
+  reservations:
+    ports:
+    - "8083:8080"
+    environment:
+    - PORT=8080
+  
+  files:
+    ports:
+    - "8084:8080"
+    environment:
+    - PORT=8080
+
+  redis:
+    image: redis
+    ports:
+    - "6379:6379"
+
+  rabbitmq:
+    image: rabbitmq:3.5.3-management
+    ports:
+    - "5672:5672"
+    - "15672:15672"
