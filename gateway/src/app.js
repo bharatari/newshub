@@ -18,9 +18,7 @@ const errorOptions = {
 };
 
 app
-  .use(body({
-    multipart: true,
-  }))
+  .use(body())
   .use(error(errorOptions))
   .use(cors())
   .use(jwt({ secret: process.env.JWT_SECRET, passthrough: true }))

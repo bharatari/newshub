@@ -1,8 +1,8 @@
 const data = require('../../utils/data');
-const querystring = require('querystring');
+const proxy = require('../proxy/index');
 
 module.exports = (router) => {
-  router.post('/api/log', async (ctx, next) => {
+  router.post('/api/reservation', async (ctx, next) => {
     const path = ctx.request.path;
     const body = ctx.request.body;
     const headers = ctx.request.headers;

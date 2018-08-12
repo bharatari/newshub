@@ -6,12 +6,13 @@ services:
     links:
     - reservations
     - events
-    - server
+    - authentication
+    - files
     - redis
 
-  server:
-    build: ../Server
-    env_file: ../Server/.env
+  authentication:
+    build: ../Services/newshub-authentication/
+    env_file: ../Services/newshub-authentication/.env
     links:
     - postgres
     - redis
@@ -26,6 +27,13 @@ services:
   reservations:
     build: ../Services/newshub-reservations/
     env_file: ../Services/newshub-reservations/.env
+    links:
+    - postgres
+    - redis
+
+  files:
+    build: ../Services/newshub-files/
+    env_file: ../Services/newshub-files/.env
     links:
     - postgres
     - redis

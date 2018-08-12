@@ -8,7 +8,7 @@ An API gateway for NewsHub.
 
 * [newshub-client](https://github.com/bharatari/newshub-client): NewsHub's client built on React and Redux
 * [newshub-client-server](https://github.com/bharatari/newshub-client-server): NewsHub's client server built on Koa
-* [newshub-server](https://github.com/bharatari/newshub-server)
+* [newshub-authentication](https://github.com/bharatari/newshub-authentication)
 * [newshub-gateway](https://github.com/bharatari/newshub-gateway): API gateway
 * [newshub-events](https://github.com/bharatari/newshub-events): Events functionality
 
@@ -34,7 +34,7 @@ If you omit the tag/version when pushing the images, they will automatically be 
      docker-compose build
      docker-compose up --build
      docker-compose up -d
-     docker-compose run npm test
+     docker-compose run authentication -e NODE_ENV=test npm test
      docker tag gateway_<service> <user>/newshub_<service>
      docker push <user>/newshub_<service>
 

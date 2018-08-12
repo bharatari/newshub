@@ -12,15 +12,16 @@ services:
     links:
     - reservations
     - events
-    - server
+    - authentication
+    - files
     - redis
 
-  server:
-    image: bharatari/newshub_server
+  authentication:
+    image: bharatari/newshub_authentication
     environment:
     - NODE_ENV=production
     restart: always
-    env_file: server.env
+    env_file: authentication.env
     links:
     - redis
 
@@ -39,5 +40,14 @@ services:
     - NODE_ENV=production
     restart: always
     env_file: reservations.env
+    links:
+    - redis
+
+  files:
+    image: bharatari/newshub_files
+    environment:
+    - NODE_ENV=production
+    restart: always
+    env_file: files.env
     links:
     - redis

@@ -5,17 +5,12 @@ const request = require('request-promise-native');
 module.exports = {
   services: [
     { 
-      hostname: 'http://server:8080',
-      name: 'newshub-server',
+      hostname: 'http://authentication:8080',
+      name: 'newshub-authentication',
       endpoints: [
-        '/api/building',
-        '/api/image',
         '/api/organization',
         '/api/reset-password',
         '/api/role',
-        '/api/room',
-        '/api/room-reservation',
-        '/api/signup-token',
         '/api/user',
         '/api/login',
       ],
@@ -34,6 +29,13 @@ module.exports = {
       endpoints: [
         '/api/device',
         '/api/reservation',
+      ],
+    },
+    { 
+      hostname: 'http://files:8080',
+      name: 'newshub-files',
+      endpoints: [
+        '/api/file',
       ],
     },
   ],
