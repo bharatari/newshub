@@ -3,11 +3,11 @@ const proxy = require('../proxy/index');
 
 module.exports = (router) => {
   router.post('/api/reservation', async (ctx, next) => {
+    // TODO: Properly integrate with reservations microservice
     const path = ctx.request.path;
     const body = ctx.request.body;
     const headers = ctx.request.headers;
     const userId = ctx.state.user ? ctx.state.user.userId : '';
-    const barcode = body.barcode;
 
     try {
       headers['newshub-user-id'] = userId;
@@ -19,39 +19,8 @@ module.exports = (router) => {
         });
       }
 
-      const query = {
-        barcode,
-      };
-
-      const qstring = querystring.stringify(query);
-
-      let targetUser;
-
-      try {
-        targetUser = JSON.parse(await data.get(`/api/user`, `?${qstring}`, {
-          'content-type': 'application/json; charset=utf-8',
-          'authorization': headers['authorization'],
-        }));
-      } catch (e) {
-        throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
-      }
-
-      let targetUserId;
-
-      if (targetUser) {
-        if (targetUser[0]) {
-          targetUserId = targetUser[0].id;
-        } else {
-          throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
-        }
-      } else {
-        throw { statusCode: 400, message: 'BARCODE_NOT_FOUND' };
-      }
-
-      const log = await data.post('/api/log', {
+      const reservation = await data.post('/api/reservation', {
         userId,
-        targetUserId,
-        eventId: body.eventId,
       }, {
         'content-type': 'application/json; charset=utf-8',
         'authorization': headers['authorization'],
@@ -59,9 +28,7 @@ module.exports = (router) => {
         'newshub-organization-id': headers['newshub-organization-id'],
       });
 
-      log.targetUser = targetUser[0];
-
-      data.respond(ctx, log, next);
+      data.respond(ctx, reservation, next);
     } catch (e) {
       data.handleError(ctx, e, next);
     }

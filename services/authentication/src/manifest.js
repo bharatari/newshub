@@ -1,4 +1,5 @@
 export default {
+  // TODO: Finish
   user: [
     'user:create',
     'user:read',
@@ -6,11 +7,11 @@ export default {
     'user:delete',
     'user:update:roles',
   ],
-  reservation: [
-    'reservation:create',
-    'reservation:read',
-    'reservation:update',
-    'reservation:delete',
-    'reservation:approve',
-  ]
+  resetPassword: [
+    'resetPassword:create',
+    'resetPassword:read',
+    'resetPassword:update',
+    'resetPassword:delete',
+    'resetPassword:approve',
+  ],
 };

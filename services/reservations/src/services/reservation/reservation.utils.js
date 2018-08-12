@@ -45,8 +45,7 @@ module.exports = {
     if (specialApproval) {
       let canApproveSpecialApproval;
 
-      // STORE THIS CALL BY SENDING ALL ROLES
-      // SIMPLE INCLUDE CHECK ON THIS END
+      // TODO: Pass full expanded roles from gateway
       if (access.isPermission(specialApproval)) {
         canApproveSpecialApproval = await access.has(hook.params.authorization, specialApproval);
       } else {
@@ -68,7 +67,7 @@ module.exports = {
         throw new errors.Forbidden('MASTER_SPECIAL_REQUEST');
       }
     } else {
-      // STORE THIS CALL
+      // TODO: Pass full expanded roles from gateway
       const canApprove = await access.can(hook.params.authorization, 'reservation', 'update', 'approved', hook.id);
 
       if (canApprove) {
@@ -88,7 +87,7 @@ module.exports = {
     }
   },
   async checkOut(hook, models, redis, userId, reservation, data) {
-    // STORE THIS CALL
+    // TODO: Pass full expanded roles from gateway
     const canCheckOut = await access.can(hook.params.authorization, 'reservation', 'update', 'checkedOut', hook.id);
 
     if (canCheckOut) {
@@ -107,7 +106,7 @@ module.exports = {
     }
   },
   async checkIn(hook, models, redis, userId, reservation, data) {
-    // STORE THIS CALL
+    // TODO: Pass full expanded roles from gateway
     const canCheckIn = await access.can(hook.params.authorization, 'reservation', 'update', 'checkedIn', hook.id);
 
     if (canCheckIn) {
@@ -126,7 +125,7 @@ module.exports = {
     }
   },
   async disable(hook, models, redis, userId, reservation, data) {
-    // STORE THIS CALL
+    // TODO: Pass full expanded roles from gateway
     const canDisable = await access.can(hook.params.authorization, 'reservation', 'update', 'disabled', hook.id);
 
     if (canDisable) {
@@ -145,7 +144,7 @@ module.exports = {
     }
   },
   async adminNotes(hook, models, redis, userId, reservation, data) {
-    // STORE THIS CALL
+    // TODO: Pass full expanded roles from gateway
     const canUpdateAdminNotes = await access.can(hook.params.authorization, 'reservation', 'update', 'adminNotes', hook.id);
 
     if (canUpdateAdminNotes) {

@@ -10,11 +10,11 @@ module.exports = function (options) {
       const authorization = hook.params.headers['authorization'];
       const userId = hook.params.headers['newshub-user-id'];
 
-      // STORE THIS CALl
+      // TODO: Pass user from gateway
       hook.params.user = await data.getUser(authorization, userId);
       hook.params.authorization = authorization;
   
-      // STORE THIS CALL
+      // TODO: Pass full expanded roles from gateway
       const can = await access.can(hook.params.authorization, options.service, hook.method);
       
       if (can) {
