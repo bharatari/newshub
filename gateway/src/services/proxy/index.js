@@ -18,6 +18,8 @@ module.exports = async (ctx, next) => {
           'content-type': 'application/json; charset=utf-8',
           'authorization': headers['authorization'],
         });
+
+        // headers['newshub-user'] = JSON.stringify(await data.getUser(userId, headers));
       }
 
       // Don't dynamically resolve method names
