@@ -5,13 +5,12 @@ export default {
     'reservation:read',
     'reservation:update',
     'reservation:delete',
-    'reservation:approve',
+    'reservation:instant'
   ],
   device: [
     'device:create',
     'device:read',
     'device:update',
     'device:delete',
-    'device:approve',
   ],
 };
