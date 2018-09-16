@@ -11,6 +11,7 @@ const associate = require('./hooks/associate');
 const populate = require('./hooks/populate');
 const process = require('./hooks/process');
 const filter = require('./hooks/filter');
+const instant = require('./hooks/instant');
 const status = require('./hooks/status');
 const email = require('./hooks/email');
 const validate = require('./hooks/validate');
@@ -36,6 +37,7 @@ module.exports = {
       populate(),
     ],
     create: [
+      // instant(),
       process(),
       validate(),
       restrict(),
@@ -62,6 +64,7 @@ module.exports = {
     ],
     get: [],
     create: [
+      // instant(),
       associate(),
       email(),
     ],
