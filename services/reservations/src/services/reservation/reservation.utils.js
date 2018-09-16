@@ -6,6 +6,7 @@ const _ = require('lodash');
 const access = require('../../utils/access');
 const async = require('async');
 const data = require('../../utils/data');
+const action = require('../action/action.utils');
 
 module.exports = {
   async checkSpecialApproval(models, id) {
@@ -58,6 +59,8 @@ module.exports = {
         try {
           await email.queueEmails([reservation.user], null, 'approved', 'USER_RESERVATION_RESPONSE');
 
+          await action.storeAction(models, hook.id, hook.data, 'approved', hook.params.user);
+
           return hook;
         } catch (e) {
           // Don't throw error just because email didn't send
@@ -75,6 +78,8 @@ module.exports = {
 
         try {
           await email.queueEmails([reservation.user], null, 'approved', 'USER_RESERVATION_RESPONSE');
+
+          await action.storeAction(models, hook.id, hook.data, 'approved', hook.params.user);
 
           return hook;
         } catch (e) {
@@ -94,7 +99,9 @@ module.exports = {
       hook.data.checkedOutBy = hook.params.user;
 
       try {
-        await email.queueEmails([reservation.user], null, 'checked out', 'USER_RESERVATION_RESPONSE')
+        await email.queueEmails([reservation.user], null, 'checked out', 'USER_RESERVATION_RESPONSE');
+
+        await action.storeAction(models, hook.id, hook.data, 'checkedOut', hook.params.user);
 
         return hook;
       } catch (e) {
@@ -113,7 +120,9 @@ module.exports = {
       hook.data.checkedInBy = hook.params.user;
 
       try {
-        await email.queueEmails([reservation.user], null, 'checked in', 'USER_RESERVATION_RESPONSE')
+        await email.queueEmails([reservation.user], null, 'checked in', 'USER_RESERVATION_RESPONSE');
+
+        await action.storeAction(models, hook.id, hook.data, 'checkedIn', hook.params.user);
 
         return hook;
       } catch (e) {
@@ -132,7 +141,9 @@ module.exports = {
       hook.data.disabledBy = hook.params.user;
 
       try {
-        await email.queueEmails([reservation.user], null, 'rejected', 'USER_RESERVATION_RESPONSE')
+        await email.queueEmails([reservation.user], null, 'rejected', 'USER_RESERVATION_RESPONSE');
+
+        await action.storeAction(models, hook.id, hook.data, 'disabled', hook.params.user);
 
         return hook;
       } catch (e) {
@@ -149,7 +160,7 @@ module.exports = {
 
     if (canUpdateAdminNotes) {
       try {
-        await email.queueEmails([reservation.user], null, adminNotes, 'USER_RESERVATION_ADMIN_NOTES')
+        await email.queueEmails([reservation.user], null, adminNotes, 'USER_RESERVATION_ADMIN_NOTES');
 
         return hook;
       } catch (e) {

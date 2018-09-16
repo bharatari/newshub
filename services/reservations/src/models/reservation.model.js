@@ -83,6 +83,7 @@ module.exports = function (app) {
 
   reservation.associate = function (models) {
     reservation.belongsToMany(models.device, { through: modelUtils.reservationDevices(sequelize) });
+    reservation.hasMany(models.action);
   };
 
   return reservation;
