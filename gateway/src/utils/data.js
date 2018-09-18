@@ -162,5 +162,18 @@ module.exports = {
     } else {
       return '';
     }
+  },
+  async getUser(userId, headers) {
+    try {
+      let user = JSON.parse(await data.get(`/api/user/${userId}`, '', headers));
+
+      if (user) {
+        user.roles = JSON.parse(await data.get(`/api/role`, '?roles=all', headers));
+      }
+  
+      return user;
+    } catch (e) {
+      return null;
+    }
   }
 };

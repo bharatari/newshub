@@ -7,6 +7,8 @@ module.exports = function (options) {
     if (hook.type === 'before') {
       const include = [{
         model: models.device,
+      }, {
+        model: models.action,
       }];
 
       hook.params.sequelize = modelUtils.mergeQuery(hook.params.sequelize, null, include);

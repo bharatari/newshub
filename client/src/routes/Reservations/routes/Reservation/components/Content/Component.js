@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import classes from './Styles.scss';
 import classNames from 'classnames';
 import { FormatDate, Deleter } from 'components/';
-import { Actions, Devices, AdminNotes } from '../';
+import { Actions, Devices, AdminNotes, ActionItem } from '../';
 import reservation from 'modules/reservation/utils';
 import user from 'modules/user/utils';
 import access from 'utils/access';
@@ -20,38 +20,17 @@ export default class Content extends React.Component {
 
   render() {
     const { reservation: { notes, adminNotes }, roles, deleteReservation } = this.props;
-    const reviewedBy = () => {
-      const reviewedByName = _.get(this.props.reservation, 'approvedBy.fullName') || _.get(this.props.reservation, 'rejectedBy.fullName');
 
-      if (reviewedByName) {
-        return (
-          <li>
-            <strong>{reviewedByName}</strong> reviewed this reservation
-          </li>
-        );
-      }
-    };
-    const checkedOutBy = () => {
-      const checkedOutByName = _.get(this.props.reservation, 'checkedOutBy.fullName');
+    const reservationActions = _.get(this.props.reservation, 'actions');
+  
+    const getReservationActions = () => {
+      const array = [];
 
-      if (checkedOutByName) {
-        return (
-          <li>
-            <strong>{checkedOutByName}</strong> checked out this reservation
-          </li>
-        );
+      for (let i = 0; i < reservationActions.length; i++) {
+        array.push(<ActionItem key={reservationActions[i].id} action={reservationActions[i]} />);
       }
-    };
-    const checkedInBy = () => {
-      const checkedInByName = _.get(this.props.reservation, 'checkedInBy.fullName');
 
-      if (checkedInByName) {
-        return (
-          <li>
-            <strong>{checkedInByName}</strong> checked in this reservation
-          </li>
-        );
-      }
+      return array;
     };
 
     const color = reservation.getReservationColor(this.props.reservation);
@@ -116,9 +95,7 @@ export default class Content extends React.Component {
                 <li>
                   <strong>{this.props.reservation.user.fullName}</strong> created this on <FormatDate datetime={this.props.reservation.createdAt} />
                 </li>
-                { reviewedBy() }
-                { checkedOutBy() }
-                { checkedInBy() }
+                { reservationActions ? getReservationActions() : null }
               </ul>
             </div>
           </div>

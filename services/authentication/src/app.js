@@ -18,7 +18,6 @@ const authentication = require('./authentication');
 const channels = require('./channels');
 const services = require('./services');
 const appHooks = require('./app.hooks');
-const skipper = require('skipper');
 const redis = require('./redis');
 
 const app = express(feathers());
@@ -35,9 +34,6 @@ app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 
 // Host the public folder
 app.use('/', express.static(app.get('public')));
-app.use('/app/*', express.static(app.get('public')));
-
-app.use(skipper());
 
 // Set up Plugins and providers
 app.configure(express.rest());
