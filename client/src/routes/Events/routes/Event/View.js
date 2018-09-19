@@ -47,7 +47,7 @@ export default class EventView extends React.Component {
     return (
       <div>
         <SidebarPage currentUrl={currentUrl} actions={actions}
-          header="Event" loading={requestingEvent || requestingUpdateEvent}
+          header="Event" loading={requestingEvent || requestingUpdateEvent || requestingCreateLog || manualLog.requesting}
           user={this.props.user} roles={roles}>
           <Card column="sixteen">
             <div>
