@@ -18,6 +18,7 @@ export default class Devices extends React.Component {
             <span className={classes.quantityHeader}>
               Quantity <span className={classes.quantity}>{device.reservation_devices.quantity}</span>
             </span>
+            <p className={classes.barcode}><i className="barcode icon"></i>{device.barcode}</p>
           </div>
         );
       });
