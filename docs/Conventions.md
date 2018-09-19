@@ -12,6 +12,10 @@ File naming conventions should follow platform specific guidelines. For example,
 
 URLs and endpoints are always kebab-cased.
 
+## Database
+
+Tables should be **snake_cased**.
+
 ## Service/Model Naming
 
 Depending on the context, services and models may be referred to in their kebab-case form *or* camelCase form. The `newshub-room-reservation` service resides in the `/services/room-reservation` folder to follow the kebab-case folder structure naming convention and resides on the `/api/room-reservation` endpoint to follow the kebab-case endpoint naming convention. However, in all other contexts the service and model are referred to in their camelCase form. Within permissions, models are camelCased while the rest of the permission is kebab-cased. 
