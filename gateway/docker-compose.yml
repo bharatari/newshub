@@ -30,11 +30,11 @@ services:
     environment:
     - PORT=8080
 
-  room_reservations:
-    ports:
-    - "8080"
-    environment:
-    - PORT=8080
+#  room_reservations:
+#    ports:
+#    - "8080"
+#    environment:
+#    - PORT=8080
 
   redis:
     image: redis
