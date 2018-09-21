@@ -16,12 +16,18 @@ module.exports = async (ctx, next) => {
       headers['newshub-user-id'] = userId;
     
       if (userId) {
-        headers['newshub-organization-id'] = await data.getOrganizationId(userId, {
+        const user = await data.getUser(userId, {
           'content-type': 'application/json; charset=utf-8',
           'authorization': authorization,
         });
-
-        headers['newshub-user'] = JSON.stringify(await data.getUser(userId, headers));
+        
+        if (user.currentOrganization) {
+          headers['newshub-organization-id'] = user.currentOrganization.id;
+        } else {
+          headers['newshub-organization-id'] = '';
+        }
+        
+        headers['newshub-user'] = JSON.stringify(user);
         headers['newshub-permissions'] = JSON.stringify(await access.getPermissions(authorization));
       }
 

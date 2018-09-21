@@ -11,7 +11,7 @@ module.exports = function (options) {
       const userId = hook.params.headers['newshub-user-id'];
       const permissions = JSON.parse(hook.params.headers['newshub-permissions']);
       const user = JSON.parse(hook.params.headers['newshub-user']);
-
+      
       hook.params.user = user;
       hook.params.permissions = permissions;
       hook.params.authorization = authorization;

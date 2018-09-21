@@ -166,7 +166,7 @@ module.exports = {
   async getUser(userId, headers) {
     try {
       let user = JSON.parse(await this.get(`/api/user/${userId}`, '', headers));
-  
+
       return user;
     } catch (e) {
       return null;
