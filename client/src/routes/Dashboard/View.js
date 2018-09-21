@@ -30,10 +30,14 @@ export default class HomeView extends React.Component {
   render() {
     const { requestingCurrent, requestingUpcoming } = this.props;
 
+    const logo = (
+      <img height="40" src={this.props.user.currentOrganization.logo}/>
+    );
+
     return (
       <div>
         <SidebarPage currentUrl={this.props.currentUrl} actions={this.props.actions}
-          header="Dashboard" user={this.props.user} loading={requestingCurrent || requestingUpcoming}
+          header={logo} user={this.props.user} loading={requestingCurrent || requestingUpcoming}
           roles={this.props.roles}>
           <div className="ui stackable grid">
             <Card column="four" background="#10cfbd">
