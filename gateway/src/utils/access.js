@@ -1,8 +1,29 @@
 const _ = require('lodash');
 const request = require('request-promise-native');
 const querystring = require('querystring');
+const data = require('./data');
 
 module.exports = {
+  async getPermissions(authorization) {
+    const query = {
+      roles: 'all',
+    };
+
+    const qstring = querystring.stringify(query);   
+    const headers = [];
+
+    try {
+      headers['authorization'] = authorization;
+      headers['content-type'] = 'application/json; charset=utf-8';
+
+      const permissions = JSON.parse(await data.get(`/api/role?${qstring}`, '', headers));
+
+      return permissions;
+    } catch (e) {
+      return [];
+    }
+  },
+
   /**
    * Checks if user has permission to use given service and method.
    *

@@ -44,14 +44,7 @@ module.exports = {
     const specialApproval = await this.checkSpecialApproval(models, reservation.id);
 
     if (specialApproval) {
-      let canApproveSpecialApproval;
-
-      // TODO: Pass full expanded roles from gateway
-      if (access.isPermission(specialApproval)) {
-        canApproveSpecialApproval = await access.has(hook.params.authorization, specialApproval);
-      } else {
-        canApproveSpecialApproval = await access.is(hook.params.authorization, specialApproval);
-      }
+      let canApproveSpecialApproval = access.has(hook.params.permissions, specialApproval);
       
       if (canApproveSpecialApproval) {
         hook.data.approvedBy = hook.params.user;
@@ -70,8 +63,7 @@ module.exports = {
         throw new errors.Forbidden('MASTER_SPECIAL_REQUEST');
       }
     } else {
-      // TODO: Pass full expanded roles from gateway
-      const canApprove = await access.can(hook.params.authorization, 'reservation', 'update', 'approved', hook.id);
+      const canApprove = access.can(hook.params.permissions, 'reservation', 'update', 'approved', hook.id);
 
       if (canApprove) {
         hook.data.approvedBy = hook.params.user;
@@ -92,8 +84,7 @@ module.exports = {
     }
   },
   async checkOut(hook, models, redis, userId, reservation, data) {
-    // TODO: Pass full expanded roles from gateway
-    const canCheckOut = await access.can(hook.params.authorization, 'reservation', 'update', 'checkedOut', hook.id);
+    const canCheckOut = access.can(hook.params.permissions, 'reservation', 'update', 'checkedOut', hook.id);
 
     if (canCheckOut) {
       hook.data.checkedOutBy = hook.params.user;
@@ -113,8 +104,7 @@ module.exports = {
     }
   },
   async checkIn(hook, models, redis, userId, reservation, data) {
-    // TODO: Pass full expanded roles from gateway
-    const canCheckIn = await access.can(hook.params.authorization, 'reservation', 'update', 'checkedIn', hook.id);
+    const canCheckIn = access.can(hook.params.permissions, 'reservation', 'update', 'checkedIn', hook.id);
 
     if (canCheckIn) {
       hook.data.checkedInBy = hook.params.user;
@@ -135,7 +125,7 @@ module.exports = {
   },
   async disable(hook, models, redis, userId, reservation, data) {
     // TODO: Pass full expanded roles from gateway
-    const canDisable = await access.can(hook.params.authorization, 'reservation', 'update', 'disabled', hook.id);
+    const canDisable = access.can(hook.params.permissions, 'reservation', 'update', 'disabled', hook.id);
 
     if (canDisable) {
       hook.data.disabledBy = hook.params.user;
@@ -156,7 +146,7 @@ module.exports = {
   },
   async adminNotes(hook, models, redis, userId, reservation, data) {
     // TODO: Pass full expanded roles from gateway
-    const canUpdateAdminNotes = await access.can(hook.params.authorization, 'reservation', 'update', 'adminNotes', hook.id);
+    const canUpdateAdminNotes = access.can(hook.params.permissions, 'reservation', 'update', 'adminNotes', hook.id);
 
     if (canUpdateAdminNotes) {
       try {

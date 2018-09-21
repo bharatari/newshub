@@ -165,11 +165,7 @@ module.exports = {
   },
   async getUser(userId, headers) {
     try {
-      let user = JSON.parse(await data.get(`/api/user/${userId}`, '', headers));
-
-      if (user) {
-        user.roles = JSON.parse(await data.get(`/api/role`, '?roles=all', headers));
-      }
+      let user = JSON.parse(await this.get(`/api/user/${userId}`, '', headers));
   
       return user;
     } catch (e) {

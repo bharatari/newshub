@@ -9,14 +9,15 @@ module.exports = function (options) {
     try {
       const authorization = hook.params.headers['authorization'];
       const userId = hook.params.headers['newshub-user-id'];
+      const permissions = JSON.parse(hook.params.headers['newshub-permissions']);
+      const user = JSON.parse(hook.params.headers['newshub-user']);
 
-      // TODO: Pass user from gateway
-      hook.params.user = await data.getUser(authorization, userId);
+      hook.params.user = user;
+      hook.params.permissions = permissions;
       hook.params.authorization = authorization;
-  
-      // TODO: Pass full expanded roles from gateway
-      const can = await access.can(hook.params.authorization, options.service, hook.method);
-      
+
+      const can = access.can(permissions, options.service, hook.method);
+
       if (can) {
         return hook;
       } else {

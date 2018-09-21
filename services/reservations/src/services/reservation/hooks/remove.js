@@ -12,8 +12,7 @@ module.exports = function (options) {
         id: hook.id,
       },
     }).then(async (reservation) => {
-      // TODO: Pass full expanded roles from gateway
-      const canDelete = await access.can(hook.params.authorization, 'reservation', 'delete', null, hook.id);
+      const canDelete = access.can(hook.params.permissions, 'reservation', 'delete', null, hook.id);
 
       if (canDelete) {
         // TODO: Pass device managers from gateway

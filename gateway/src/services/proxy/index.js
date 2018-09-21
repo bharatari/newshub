@@ -1,5 +1,6 @@
 const data = require('../../utils/data');
 const _ = require('lodash');
+const access = require('../../utils/access');
 
 module.exports = async (ctx, next) => {
   if (!ctx.body) {
@@ -9,17 +10,19 @@ module.exports = async (ctx, next) => {
     const body = ctx.request.body;
     const headers = ctx.request.headers;
     const userId = ctx.state.user ? ctx.state.user.userId : '';
-    
+    const authorization = headers['authorization'];
+
     try {
       headers['newshub-user-id'] = userId;
     
       if (userId) {
         headers['newshub-organization-id'] = await data.getOrganizationId(userId, {
           'content-type': 'application/json; charset=utf-8',
-          'authorization': headers['authorization'],
+          'authorization': authorization,
         });
 
-        // headers['newshub-user'] = JSON.stringify(await data.getUser(userId, headers));
+        headers['newshub-user'] = JSON.stringify(await data.getUser(userId, headers));
+        headers['newshub-permissions'] = JSON.stringify(await access.getPermissions(authorization));
       }
 
       // Don't dynamically resolve method names

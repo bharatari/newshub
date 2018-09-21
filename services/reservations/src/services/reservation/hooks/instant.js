@@ -5,8 +5,8 @@ module.exports = function (options) {
   return async function (hook) {
     if (hook.type === 'before') {
       if (hook.data.targetUserId) {
-        const canCreateInstant = await access.has(hook.params.authorization, 'reservation', 'instant');
-        const canApprove = await access.has(hook.params.authorization, 'reservation', 'update', 'approved');
+        const canCreateInstant = access.can(hook.params.permissions, 'reservation', 'instant');
+        const canApprove = access.can(hook.params.permissions, 'reservation', 'update', 'approved');
   
         if (canCreateInstant && canApprove) {
           const targetUserId = hook.data.targetUserId;
